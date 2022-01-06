@@ -1,7 +1,8 @@
 import React from 'react';
-import Dots from './icons/DotsIcon';
+import PlusIcon from './icons/PlusIcon';
 // import recipeData from './data/recipes';
 import Recipe from './Recipe';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -11,7 +12,11 @@ const Navbar = () => {
         <h1 className="text-4xl md:text-6xl font-licorice tracking-wide">
           Recipe Collection
         </h1>
-        <Dots />
+        <Link to="/add">
+          <button className="border rounded-lg flex items-center p-2 gap-2 hover:bg-white hover:text-black">
+            Add <PlusIcon />
+          </button>
+        </Link>
       </div>
     </div>
   );
