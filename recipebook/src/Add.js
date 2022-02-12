@@ -32,8 +32,8 @@ const Add = () => {
   const initialState = {
     title: '',
     link: 'N/A',
-    image: 'N/A',
-    description: 'N/A',
+    img: '/defaultrecipe.jpeg',
+    description: 'No description provided',
     prepTime: 'N/A',
     cookTime: 'N/A',
     servings: 'N/A',
@@ -61,9 +61,12 @@ const Add = () => {
   const setFormData = (elements) => {
     let info = formData;
 
+    // Loop through all elements in the form
     for (var i = 0; i < elements.length; i++) {
+      // Get the element
       var item = elements.item(i);
 
+      // If the element has a name and a value, update the form data
       if (item.name && item.value) {
         info[item.name] = item.value.trim();
       }
@@ -71,20 +74,20 @@ const Add = () => {
     formData = info;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let elements = e.target.elements;
     setFormData(elements);
 
-    // Update recipe list from local storage
-    let recipeData = JSON.parse(localStorage.getItem('recipes'));
-
-    // Create a new list if no recipes exist.
-    if (!recipeData) {
-      recipeData = [];
-    }
-    recipeData.push(formData);
-    localStorage.setItem('recipes', JSON.stringify(recipeData));
+    await fetch('http://localhost:3000/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+      }),
+    });
   };
 
   return (
