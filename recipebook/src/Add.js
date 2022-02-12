@@ -53,9 +53,14 @@ const Add = () => {
       displayImage.style.backgroundImage = `url(${uploaded_image})`;
     });
 
+    // Read the image
     if (e.target.files.length > 0) {
       reader.readAsDataURL(e.target.files[0]);
     }
+
+    // Store uploaded image in formData
+    const objectURL = URL.createObjectURL(e.target.files[0]);
+    formData.img = objectURL;
   };
 
   const setFormData = (elements) => {
