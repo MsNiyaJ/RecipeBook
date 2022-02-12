@@ -5,6 +5,12 @@ module.exports = {
       fontFamily: {
         licorice: ['Licorice', 'cursive'],
       },
+      minHeight: {
+        32: '8rem',
+      },
+      backgroundImage: {
+        defaultrecipe: "url('../public/defaultrecipe.jpeg')",
+      },
     },
   },
   plugins: [],
