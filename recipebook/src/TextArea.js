@@ -1,11 +1,6 @@
 import React from 'react';
-import './App.css';
 
-// Name is for submission backend: string
-// Label is what will be displayed on UI: string
-// Required: boolean
-// Max is the max number of chars: number
-const TextInput = ({ name, label, required, max, subText = '' }) => {
+const TextArea = ({ name, label, required, max, subText = '' }) => {
   return (
     <label htmlFor={name}>
       <p>
@@ -13,11 +8,10 @@ const TextInput = ({ name, label, required, max, subText = '' }) => {
         <span className="text-red-600">{required && '*'}</span>
         <span className="text-gray-400 italic">{subText}</span>
       </p>
-      <input
-        type={name}
+      <textarea
         name={name}
         id={name}
-        className="textField"
+        className="textField min-h-32"
         required={required}
         maxLength={max}
       />
@@ -25,4 +19,4 @@ const TextInput = ({ name, label, required, max, subText = '' }) => {
   );
 };
 
-export default TextInput;
+export default TextArea;

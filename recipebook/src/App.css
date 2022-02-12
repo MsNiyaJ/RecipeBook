@@ -1,3 +1,8 @@
 .textField {
   @apply border-2 w-full my-2 p-2 focus:outline-black;
 }
+
+.textArea {
+  @apply border-2 w-full my-2 p-2 focus:outline-black;
+  background-color: blueviolet;
+}
