@@ -2,8 +2,8 @@ import React from 'react';
 import '../global.css';
 import ChevronLeft from '../icons/ChevronLeft';
 import LinkButton from '../components/LinkButton';
-import TextInput from '../TextInput';
-import TextArea from '../TextArea';
+import TextInput from '../components/TextInput';
+import TextArea from '../components/TextArea';
 import Navbar from '../components/Navbar';
 
 const Add = () => {
