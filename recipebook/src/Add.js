@@ -1,32 +1,10 @@
 import React from 'react';
 import './App.css';
 import ChevronLeft from './icons/ChevronLeft';
-import { Link } from 'react-router-dom';
+import LinkButton from './LinkButton';
 import TextInput from './TextInput';
 import TextArea from './TextArea';
-
-const Navbar = () => {
-  return (
-    <div className="bg-red-600 py-4 md:py-8 text-white border-b-4 border-dotted sticky top-0 z-20">
-      <div className=" flex justify-between items-center px-4 md:px-20">
-        <Link to="/">
-          <div className="flex gap-2">
-            <ChevronLeft /> <span className="hidden md:block">Recipes</span>
-          </div>
-        </Link>
-        <h1 className="text-4xl md:text-6xl font-licorice tracking-wide">
-          Add a Recipe
-        </h1>
-        <button
-          type="submit"
-          className="border rounded-md flex items-center p-2 gap-2 text-xs md:text-lg hover:bg-white hover:text-black"
-        >
-          Save
-        </button>
-      </div>
-    </div>
-  );
-};
+import Navbar from './Navbar';
 
 const Add = () => {
   const initialState = {
@@ -59,8 +37,8 @@ const Add = () => {
     }
 
     // Store uploaded image in formData
-    const objectURL = URL.createObjectURL(e.target.files[0]);
-    formData.img = objectURL;
+    const imageUrl = URL.createObjectURL(e.target.files[0]);
+    formData.img = imageUrl;
   };
 
   const setFormData = (elements) => {
@@ -98,7 +76,29 @@ const Add = () => {
   return (
     <div className="bg-white">
       <form action="" onSubmit={handleSubmit}>
-        <Navbar />
+        <Navbar
+          leftContent={
+            <LinkButton
+              link={'/'}
+              buttonStyle="flex gap-2"
+              buttonContent={
+                <div className="flex items-center gap-2">
+                  <ChevronLeft />{' '}
+                  <span className="hidden md:block">Recipes</span>
+                </div>
+              }
+            />
+          }
+          centerContent="Add a Recipe"
+          rightContent={
+            <button
+              type="submit"
+              className="border rounded-md flex items-center p-2 gap-2 text-xs md:text-lg hover:bg-white hover:text-black"
+            >
+              Save
+            </button>
+          }
+        />
         <div className="container mx-auto p-10 pb-20">
           <div className="flex flex-col-reverse md:flex-row gap-10">
             <div className="w-full">
@@ -126,7 +126,6 @@ const Add = () => {
                   className="absolute top-0 left-0 w-full h-full opacity-0"
                   type="file"
                   id="image_input"
-                  name="image"
                   accept="image/png, image/jpg"
                   onChange={imageUpload}
                 ></input>

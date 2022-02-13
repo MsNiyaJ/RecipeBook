@@ -21,6 +21,18 @@
       "servings": "4",
       "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "instructions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    {
+      "title": "Strawberry Cheesecake",
+      "link": "N/A",
+      "img": "https://celebratingsweets.com/wp-content/uploads/2018/06/Strawberry-Shortcake-Cake-4.jpg",
+      "description": "Its delicious eat it.",
+      "prepTime": "N/A",
+      "cookTime": "N/A",
+      "servings": "N/A",
+      "ingredients": "Idk",
+      "directions": "Eat it",
+      "id": "vUaPIY7"
     }
   ]
 }

@@ -1,26 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PlusIcon from './icons/PlusIcon';
 import Recipe from './Recipe';
-import { Link } from 'react-router-dom';
-// import getAllRecipes from './requests';
+import Navbar from './Navbar';
+import PlusIcon from './icons/PlusIcon';
+import LinkButton from './LinkButton';
 
-const Navbar = () => {
-  return (
-    <div className="bg-red-600 py-4 md:py-8 text-white border-b-4 border-dotted sticky top-0">
-      <div className=" flex justify-between items-center px-2 md:px-20">
-        <div className="w-20"></div>
-        <h1 className="text-4xl md:text-6xl font-licorice tracking-wide">
-          Recipe Collection
-        </h1>
-        <Link to="/add">
-          <button className="border rounded-lg flex items-center p-2 gap-2 hover:bg-white hover:text-black">
-            Add <PlusIcon />
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
-};
+// import getAllRecipes from './requests';
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -58,7 +42,21 @@ const Home = () => {
 
   return (
     <div className="bg-white h-screen">
-      <Navbar />
+      <Navbar
+        centerContent={'Recipe Collection'}
+        rightContent={
+          <LinkButton
+            link={'/add'}
+            buttonStyle="border rounded-lg flex items-center p-2 gap-2 hover:bg-white hover:text-black"
+            buttonContent={
+              <div className="flex items-center gap-2">
+                Add
+                <PlusIcon />
+              </div>
+            }
+          />
+        }
+      />
       <div className="border-x-2">
         {recipeData.length > 0 ? (
           recipeData.map((recipe) => {
