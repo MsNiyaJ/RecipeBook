@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './global.css';
 
 /**
  * @description This is the text input component
