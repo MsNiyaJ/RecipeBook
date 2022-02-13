@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = ({ leftContent, centerContent, rightContent }) => {
   return (
-    <div className="bg-red-600 py-4 md:py-8 text-white border-b-4 border-dotted sticky top-0">
+    <div className="bg-red-600 py-4 md:py-8 text-white border-b-4 border-dotted sticky top-0 z-20">
       <div className=" flex justify-between items-center px-2 md:px-20">
         <div id="left" className="w-20">
           {leftContent}

@@ -39,8 +39,8 @@ const Recipe = ({ recipe }) => {
   return (
     <div className="p-4 border-b-2 flex flex-col md:flex-row text-center md:text-justify items-center gap-4">
       {/* Image */}
-      <div className="h-44 w-44">
-        <img src={img} alt="" className="w-full h-full" />
+      <div className="h-52 w-72">
+        <img src={img} alt="" className="w-full h-full object-cover" />
       </div>
       {/* Title & Description */}
       <div className="w-full md:w-5/6">
