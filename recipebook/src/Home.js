@@ -32,9 +32,6 @@ const Home = () => {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-
   let recipeData = [];
   if (data) {
     recipeData = [...data];
@@ -57,19 +54,31 @@ const Home = () => {
           />
         }
       />
-      <div className="border-x-2">
-        {recipeData.length > 0 ? (
-          recipeData.map((recipe) => {
-            return <Recipe key={recipe.id} recipe={recipe} />;
-          })
-        ) : (
-          // If no recipes are found, display a message
-          <div className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
-            No recipes found. <br />
-            Add a new recipe by clicking on the add button above!
-          </div>
-        )}
-      </div>
+      {loading && (
+        <p className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
+          Getting Your Recipes...
+        </p>
+      )}
+      {error && (
+        <p className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
+          There was a problem getting your recipes. Please try again later.
+        </p>
+      )}
+      {data && !loading && !error && (
+        <div className="border-x-2">
+          {recipeData.length > 0 ? (
+            recipeData.map((recipe) => {
+              return <Recipe key={recipe.id} recipe={recipe} />;
+            })
+          ) : (
+            // If no recipes are found, display a message
+            <div className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
+              No recipes found. <br />
+              Add a new recipe by clicking on the add button above!
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
