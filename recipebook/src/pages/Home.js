@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from '../Recipe';
 import Navbar from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
 import PlusIcon from '../icons/PlusIcon';
 import LinkButton from '../components/LinkButton';
 
 // import getAllRecipes from './requests';
 
 const Home = () => {
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState('');
+  const [recipes, setRecipes] = useState([]);
 
   // When the component mounts, fetch the data from the API
   useEffect(() => {
@@ -21,7 +23,7 @@ const Home = () => {
         throw new Error('Error' + response.statusText);
       })
       .then((data) => {
-        setData(data);
+        setRecipes([...data]);
       })
       .catch((error) => {
         console.error('Error fetching data: ', error);
@@ -32,14 +34,21 @@ const Home = () => {
       });
   }, []);
 
-  let recipeData = [];
-  if (data) {
-    recipeData = [...data];
-  }
+  // Filter the recipes by name based on the search value
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="bg-white h-screen">
       <Navbar
+        leftContent={
+          <SearchBar
+            setSearch={setSearch}
+            inputClass="text-black placeholder-gray-500 rounded-lg p-2"
+            placeholder="Search for a recipe"
+          />
+        }
         centerContent={'Recipe Collection'}
         rightContent={
           <LinkButton
@@ -64,10 +73,10 @@ const Home = () => {
           There was a problem getting your recipes. Please try again later.
         </p>
       )}
-      {data && !loading && !error && (
+      {filteredRecipes && !loading && !error && (
         <div className="border-x-2">
-          {recipeData.length > 0 ? (
-            recipeData.map((recipe) => {
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((recipe) => {
               return <Recipe key={recipe.id} recipe={recipe} />;
             })
           ) : (
