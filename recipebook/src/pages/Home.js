@@ -45,7 +45,7 @@ const Home = () => {
         leftContent={
           <SearchBar
             setSearch={setSearch}
-            inputClass="text-black placeholder-gray-500 rounded-lg p-2"
+            inputClass="text-black placeholder-gray-500 rounded-lg p-2 w-20 sm:w-40"
             placeholder="Search for a recipe"
           />
         }
@@ -53,7 +53,7 @@ const Home = () => {
         rightContent={
           <LinkButton
             link={'/add'}
-            buttonStyle="border rounded-lg flex items-center p-2 gap-2 hover:bg-white hover:text-black"
+            buttonStyle="border rounded-lg flex  text-xs md:text-lg items-center p-2 gap-2 hover:bg-white hover:text-black"
             buttonContent={
               <div className="flex items-center gap-2">
                 Add
