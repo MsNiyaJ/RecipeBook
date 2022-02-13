@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from '../Recipe';
-import Navbar from '../Navbar';
+import Navbar from '../components/Navbar';
 import PlusIcon from '../icons/PlusIcon';
-import LinkButton from '../LinkButton';
+import LinkButton from '../components/LinkButton';
 
 // import getAllRecipes from './requests';
 

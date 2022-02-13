@@ -40,7 +40,15 @@ const Recipe = ({ recipe }) => {
     <div className="p-4 border-b-2 flex flex-col md:flex-row text-center md:text-justify items-center gap-4">
       {/* Image */}
       <div className="h-52 w-72">
-        <img src={img} alt={title} className="w-full h-full object-cover" />
+        <img
+          src={img}
+          onError={(e) => {
+            // if the image fails to load, replace it with the default image
+            e.target.src = '/defaultrecipe.jpeg';
+          }}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
       </div>
       {/* Title & Description */}
       <div className="w-full md:w-5/6">

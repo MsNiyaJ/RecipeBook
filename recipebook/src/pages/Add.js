@@ -1,10 +1,10 @@
 import React from 'react';
 import '../global.css';
 import ChevronLeft from '../icons/ChevronLeft';
-import LinkButton from '../LinkButton';
+import LinkButton from '../components/LinkButton';
 import TextInput from '../TextInput';
 import TextArea from '../TextArea';
-import Navbar from '../Navbar';
+import Navbar from '../components/Navbar';
 
 const Add = () => {
   const initialState = {
