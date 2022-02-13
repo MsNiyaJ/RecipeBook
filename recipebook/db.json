@@ -45,6 +45,18 @@
       "ingredients": "Chicken",
       "directions": "Cook",
       "id": "Lp2G8Ns"
+    },
+    {
+      "title": "Chocolate Cake",
+      "link": "N/A",
+      "img": "/defaultrecipe.jpeg",
+      "description": "CHOCOLATEEEE",
+      "prepTime": "N/A",
+      "cookTime": "N/A",
+      "servings": "N/A",
+      "ingredients": "Chocolate Cake",
+      "directions": "Bake it",
+      "id": "i7SO7nF"
     }
   ]
 }
