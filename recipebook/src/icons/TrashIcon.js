@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TrashIcon = () => {
+const TrashIcon = ({ onClick }) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5 cursor-pointer"
