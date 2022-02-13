@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
 
-// Name is for submission backend: string
-// Label is what will be displayed on UI: string
-// Required: boolean
-// Max is the max number of chars: number
+/**
+ * @description This is the text input component
+ * @param {string} name The name of the input
+ * @param {string} label The label of the input
+ * @param {boolean} required Whether the input is required or not
+ * @param {number} max The max number of characters allowed
+ * @param {string} subText Additional text to display next to the the label
+ */
 const TextInput = ({ name, label, required, max, subText = '' }) => {
   return (
     <label htmlFor={name}>
