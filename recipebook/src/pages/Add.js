@@ -16,7 +16,7 @@ const Add = () => {
     cookTime: 'N/A',
     servings: 'N/A',
     ingredients: '',
-    directions: '',
+    instructions: '',
   };
 
   let formData = initialState;
@@ -74,7 +74,7 @@ const Add = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white pt-14 md:pt-28">
       <form action="" onSubmit={handleSubmit}>
         <Navbar
           leftContent={
@@ -159,7 +159,11 @@ const Add = () => {
             label={'Ingredients'}
             required={true}
           />
-          <TextArea name={'directions'} label={'Directions'} required={true} />
+          <TextArea
+            name={'instructions'}
+            label={'Instructions'}
+            required={true}
+          />
         </div>
       </form>
     </div>

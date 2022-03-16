@@ -26,8 +26,10 @@ const Home = () => {
         setRecipes([...data]);
       })
       .catch((error) => {
-        console.error('Error fetching data: ', error);
-        setError(error);
+        // console.error('Error fetching data: ', error);
+        setError(
+          'There was a problem getting your recipes. Please try again later.'
+        );
       })
       .finally(() => {
         setLoading(false);
@@ -40,7 +42,7 @@ const Home = () => {
   );
 
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-white h-screen pt-20 md:pt-32">
       <Navbar
         leftContent={
           <SearchBar
@@ -70,7 +72,7 @@ const Home = () => {
       )}
       {error && (
         <p className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
-          There was a problem getting your recipes. Please try again later.
+          {error}
         </p>
       )}
       {filteredRecipes && !loading && !error && (

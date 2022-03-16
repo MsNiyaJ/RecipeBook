@@ -31,20 +31,8 @@
       "cookTime": "N/A",
       "servings": "N/A",
       "ingredients": "Idk",
-      "directions": "Eat it",
+      "instructions": "Eat it",
       "id": "vUaPIY7"
-    },
-    {
-      "title": "Battered-Fried Chicken",
-      "link": "https://www.seriouseats.com/batter-fried-chicken-5201988",
-      "img": "blob:http://localhost:3001/559799bb-0a2b-485d-86da-b7a2b2179b77",
-      "description": "No description provided",
-      "prepTime": "N/A",
-      "cookTime": "N/A",
-      "servings": "N/A",
-      "ingredients": "Chicken",
-      "directions": "Cook",
-      "id": "Lp2G8Ns"
     },
     {
       "title": "Chocolate Cake",
@@ -55,7 +43,7 @@
       "cookTime": "N/A",
       "servings": "N/A",
       "ingredients": "Chocolate Cake",
-      "directions": "Bake it",
+      "instructions": "Bake it",
       "id": "i7SO7nF"
     }
   ]

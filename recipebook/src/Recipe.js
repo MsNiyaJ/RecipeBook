@@ -10,7 +10,10 @@ import TrashIcon from './icons/TrashIcon';
  */
 const handleView = (event, id) => {
   event.preventDefault();
-  console.log('View recipe:', id);
+  // console.log('View recipe:', id);
+
+  // navigate to the view page
+  window.location.href = `/view/${id}`;
 };
 
 /**
