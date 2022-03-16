@@ -4,7 +4,7 @@ const DataBox = ({
   heading,
   content,
   containerClass = 'flex flex-col justify-center bg-red-100 text-black w-20 h-20 border border-red-500',
-  titleClass,
+  titleClass = 'text-xs',
 }) => {
   return (
     <div className={containerClass}>
