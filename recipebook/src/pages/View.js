@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import LinkButton from '../components/LinkButton';
 import Navbar from '../components/Navbar';
-import ChevronLeft from '../icons/ChevronLeft';
 import RecipeData from '../components/RecipeData';
 import { useLocation } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 
 const View = () => {
   // Get the slug from the URL. The slug represents the id of the recipe
@@ -38,24 +37,9 @@ const View = () => {
       });
   }, [id]);
 
-  // console.log('recipe', recipe);
-
-  // Setting up the back button for the navbar
-  const backButton = (
-    <LinkButton
-      link={'/'}
-      buttonStyle="flex gap-2"
-      buttonContent={
-        <div className="flex items-center gap-2">
-          <ChevronLeft /> <span className="hidden md:block">Recipes</span>
-        </div>
-      }
-    />
-  );
-
   return (
     <div>
-      <Navbar leftContent={backButton} centerContent={'Recipe Collection'} />
+      <Navbar leftContent={<BackButton />} centerContent={'Recipe Collection'} />
       {error && (
         <p className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
           {error}

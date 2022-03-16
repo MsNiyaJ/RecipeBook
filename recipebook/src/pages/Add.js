@@ -1,10 +1,9 @@
 import React from 'react';
 import '../global.css';
-import ChevronLeft from '../icons/ChevronLeft';
-import LinkButton from '../components/LinkButton';
 import TextInput from '../components/TextInput';
 import TextArea from '../components/TextArea';
 import Navbar from '../components/Navbar';
+import BackButton from '../components/BackButton';
 
 const Add = () => {
   const initialState = {
@@ -77,18 +76,7 @@ const Add = () => {
     <div className="bg-white pt-14 md:pt-28">
       <form action="" onSubmit={handleSubmit}>
         <Navbar
-          leftContent={
-            <LinkButton
-              link={'/'}
-              buttonStyle="flex gap-2"
-              buttonContent={
-                <div className="flex items-center gap-2">
-                  <ChevronLeft />{' '}
-                  <span className="hidden md:block">Recipes</span>
-                </div>
-              }
-            />
-          }
+          leftContent={<BackButton />}
           centerContent="Add a Recipe"
           rightContent={
             <button
