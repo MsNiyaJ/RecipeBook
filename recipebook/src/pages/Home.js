@@ -5,8 +5,6 @@ import SearchBar from '../components/SearchBar';
 import PlusIcon from '../icons/PlusIcon';
 import LinkButton from '../components/LinkButton';
 
-// import getAllRecipes from './requests';
-
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -51,7 +49,7 @@ const Home = () => {
             placeholder="Search for a recipe"
           />
         }
-        centerContent={'Recipe Collection'}
+        centerContent='Recipe Collection'
         rightContent={
           <LinkButton
             link={'/add'}

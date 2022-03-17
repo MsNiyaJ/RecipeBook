@@ -1,11 +1,15 @@
-import React from 'react';
-import '../global.css';
+import React, { useState } from 'react';
 import TextInput from '../components/TextInput';
 import TextArea from '../components/TextArea';
 import Navbar from '../components/Navbar';
 import BackButton from '../components/BackButton';
+import Modal from '../components/Modal';
+import '../global.css';
 
 const Add = () => {
+  const [open, setOpen] = useState(false); // Used to open the modal
+  const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
+
   const initialState = {
     title: '',
     link: 'N/A',
@@ -69,14 +73,42 @@ const Add = () => {
       body: JSON.stringify({
         ...formData,
       }),
-    });
+    })
+      .then((response) => {
+        // If the recipe was added successfully, open the modal with no error message
+        if (response.ok) {
+          setError(false);
+          setOpen(true);
+        }
+      })
+      // If the recipe was not added successfully, show an error message
+      .catch((error) => {
+        setError(true);
+        setOpen(true);
+        // console.error('Error adding recipe: ', error);
+      });
   };
 
   return (
     <div className="bg-white pt-14 md:pt-28">
+      {open && (
+        <Modal
+          className="flex flex-col justify-center items-center text-center"
+          title={
+            error
+              ? 'OOPS! Something went wrong!'
+              : 'Your Recipe Has Been Added!'
+          }
+          message={
+            error
+              ? 'Can not add a recipe at this time. Please try again later.'
+              : 'Go back to the recipes list and search for your new recipe!'
+          }
+        />
+      )}
       <form action="" onSubmit={handleSubmit}>
         <Navbar
-          leftContent={<BackButton />}
+          leftContent={<BackButton buttonText="Recipes" />}
           centerContent="Add a Recipe"
           rightContent={
             <button

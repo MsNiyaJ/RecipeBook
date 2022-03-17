@@ -39,7 +39,10 @@ const View = () => {
 
   return (
     <div>
-      <Navbar leftContent={<BackButton />} centerContent={'Recipe Collection'} />
+      <Navbar
+        leftContent={<BackButton buttonText="Recipes" />}
+        centerContent={'Recipe Collection'}
+      />
       {error && (
         <p className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
           {error}
