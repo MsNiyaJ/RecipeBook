@@ -19,6 +19,11 @@ Functionality:
 
 In the project directory, you can run:
 
+### `npm run dev`
+
+Concurrently runs the app in the development mode\
+and starts the JSON Server.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -32,8 +37,3 @@ You may also see any lint errors in the console.
 Starts the JSON server.\
 Open [http://localhost:3000/recipes/](http://localhost:3000/recipes/) to view the recipe list API in your browser.\
 When you add or modify a recipe this page will update.
-
-### `npm run dev`
-
-Concurrently runs the app in the development mode\
-and starts the JSON Server.
