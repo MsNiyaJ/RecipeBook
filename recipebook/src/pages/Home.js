@@ -49,7 +49,7 @@ const Home = () => {
             placeholder="Search for a recipe"
           />
         }
-        centerContent='Recipe Collection'
+        centerContent="Recipe Collection"
         rightContent={
           <LinkButton
             link={'/add'}
@@ -76,8 +76,15 @@ const Home = () => {
       {filteredRecipes && !loading && !error && (
         <div className="border-x-2">
           {filteredRecipes.length > 0 ? (
+            // Display all recipes
             filteredRecipes.map((recipe) => {
-              return <Recipe key={recipe.id} recipe={recipe} />;
+              return (
+                <Recipe
+                  key={recipe.id}
+                  recipe={recipe}
+                  setRecipes={setRecipes}
+                />
+              );
             })
           ) : (
             // If no recipes are found, display a message

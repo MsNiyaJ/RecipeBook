@@ -10,8 +10,6 @@ import TrashIcon from './icons/TrashIcon';
  */
 const handleView = (event, id) => {
   event.preventDefault();
-  // console.log('View recipe:', id);
-
   // navigate to the view page
   window.location.href = `/view/${id}`;
 };
@@ -31,12 +29,31 @@ const handleEdit = (event, id) => {
  * @param {Event} event
  * @param {string} id
  */
-const handleDelete = (event, id) => {
+const handleDelete = (event, id, setRecipes) => {
   event.preventDefault();
-  console.log('Delete recipe:', id);
+
+  // Delete from the UI
+  setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
+
+  // delete the recipe from the database
+  fetch(`http://localhost:3000/recipes/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Error deleting recipe');
+    })
+    .then((data) => {
+      console.log('Recipe deleted:', id);
+    })
+    .catch((error) => {
+       return 'Error deleting recipe';
+    });
 };
 
-const Recipe = ({ recipe }) => {
+const Recipe = ({ recipe, setRecipes }) => {
   const { id, title, description, img } = recipe;
 
   return (
@@ -45,8 +62,8 @@ const Recipe = ({ recipe }) => {
       <div className="h-52 w-72">
         <img
           src={img}
+          // if the image fails to load, replace it with the default image
           onError={(e) => {
-            // if the image fails to load, replace it with the default image
             e.target.src = '/defaultrecipe.jpeg';
           }}
           alt={title}
@@ -55,14 +72,14 @@ const Recipe = ({ recipe }) => {
       </div>
       {/* Title & Description */}
       <div className="w-full md:w-5/6">
-        <h1 className=" font-mono font-semibold">{title}</h1>
+        <h1 className="font-mono font-semibold">{title}</h1>
         <p>{description}</p>
       </div>
       {/* Actions */}
       <div className="w-1/3 place-content-center flex gap-2">
         <OpenEye onClick={(e) => handleView(e, id)} />
         <PencilIcon onClick={(e) => handleEdit(e, id)} />
-        <TrashIcon onClick={(e) => handleDelete(e, id)} />
+        <TrashIcon onClick={(e) => handleDelete(e, id, setRecipes)} />
       </div>
     </div>
   );
