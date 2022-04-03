@@ -1,6 +1,5 @@
 import React from 'react';
 import '../global.css';
-import BackButton from './BackButton';
 
 const Modal = ({ className, title, titleColor = 'text-red-500', message }) => {
   return (
@@ -11,12 +10,7 @@ const Modal = ({ className, title, titleColor = 'text-red-500', message }) => {
         >
           {title}
         </h1>
-        <p className="py-5 md:py-10">{message}</p>
-        <BackButton
-          containerClassName="flex justify-center"
-          buttonClassName="flex items-center gap-2 bg-red-500 p-2 rounded-md text-white"
-          buttonText="Back to Recipes"
-        />
+        <div className="py-5 md:py-10">{message}</div>
       </div>
     </div>
   );

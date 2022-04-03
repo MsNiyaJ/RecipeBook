@@ -37,7 +37,7 @@
     {
       "title": "Chocolate Cake",
       "link": "N/A",
-      "img": "/defaultrecipe.jpeg",
+      "img": "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg",
       "description": "CHOCOLATEEEE",
       "prepTime": "N/A",
       "cookTime": "N/A",
@@ -45,6 +45,18 @@
       "ingredients": "Chocolate Cake",
       "instructions": "Bake it",
       "id": "i7SO7nF"
+    },
+    {
+      "title": "Fried Chicken",
+      "link": "N/A",
+      "img": "/defaultrecipe.jpeg",
+      "description": "Best fried chicken ever",
+      "prepTime": "N/A",
+      "cookTime": "N/A",
+      "servings": "N/A",
+      "ingredients": "fried chicken",
+      "instructions": "cook it",
+      "id": "-zoklw6"
     }
   ]
 }

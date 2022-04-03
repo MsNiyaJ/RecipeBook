@@ -100,9 +100,16 @@ const Add = () => {
               : 'Your Recipe Has Been Added!'
           }
           message={
-            error
-              ? 'Can not add a recipe at this time. Please try again later.'
-              : 'Go back to the recipes list and search for your new recipe!'
+            <div>
+              {error
+                ? 'Can not add a recipe at this time. Please try again later.'
+                : 'Go back to the recipes list and search for your new recipe!'}
+              <BackButton
+                containerClassName="flex justify-center pt-5"
+                buttonClassName="flex items-center gap-2 bg-red-500 p-2 rounded-md text-white"
+                buttonText="Back to Recipes"
+              />
+            </div>
           }
         />
       )}
