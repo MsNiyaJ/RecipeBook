@@ -8,8 +8,18 @@ import '../global.css';
  * @param {boolean} required Whether the input is required or not
  * @param {number} max The max number of characters allowed
  * @param {string} subText Additional text to display next to the the label
+ * @param {string} value The value of the input
+ * @param {Function`} onChange The function to call when the input changes
  */
-const TextInput = ({ name, label, required, max, subText = '' }) => {
+const TextInput = ({
+  name,
+  label,
+  required = false,
+  max,
+  subText = '',
+  value = '',
+  onChange = () => {},
+}) => {
   return (
     <label htmlFor={name}>
       <p>
@@ -24,6 +34,8 @@ const TextInput = ({ name, label, required, max, subText = '' }) => {
         className="textField"
         required={required}
         maxLength={max}
+        value={value}
+        onChange={onChange}
       />
     </label>
   );

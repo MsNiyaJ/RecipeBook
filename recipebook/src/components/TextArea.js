@@ -1,6 +1,14 @@
 import React from 'react';
 
-const TextArea = ({ name, label, required, max, subText = '' }) => {
+const TextArea = ({
+  name,
+  label,
+  required,
+  max,
+  subText = '',
+  value = '',
+  onChange = () => {},
+}) => {
   return (
     <label htmlFor={name}>
       <p>
@@ -14,6 +22,8 @@ const TextArea = ({ name, label, required, max, subText = '' }) => {
         className="textField min-h-32"
         required={required}
         maxLength={max}
+        value={value}
+        onChange={onChange}
       />
     </label>
   );

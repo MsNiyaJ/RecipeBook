@@ -26,7 +26,8 @@ const Recipe = ({ recipe, setRecipes }) => {
    */
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log('Edit recipe:', id);
+    // navigate to the edit page
+    window.location.href = `/edit/${id}`;
   };
 
   /**
@@ -74,9 +75,7 @@ const Recipe = ({ recipe, setRecipes }) => {
     }
 
     // Close the modal after the user confirms or cancels
-    if (userResponse === 'No' || userResponse === 'Yes') {
-      setIsOpen(false);
-    }
+    setIsOpen(false);
   };
 
   return (

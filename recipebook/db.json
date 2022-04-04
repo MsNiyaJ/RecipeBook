@@ -49,11 +49,11 @@
     {
       "title": "Fried Chicken",
       "link": "N/A",
-      "img": "/defaultrecipe.jpeg",
+      "img": "blob:http://localhost:3001/31aa7a00-1bf2-4bf0-b918-9a1b945d468d",
       "description": "Best fried chicken ever",
-      "prepTime": "N/A",
-      "cookTime": "N/A",
-      "servings": "N/A",
+      "prepTime": "5mins",
+      "cookTime": "25mins",
+      "servings": "10",
       "ingredients": "fried chicken",
       "instructions": "cook it",
       "id": "-zoklw6"

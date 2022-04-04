@@ -12,7 +12,7 @@ Functionality:
 
 - Create a new recipe
 - View a recipe
-- Edit a recipe (In progress)
+- Edit a recipe
 - Delete a recipe
 
 ## How To Run The Project Locally
