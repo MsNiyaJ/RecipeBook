@@ -2,18 +2,21 @@
 
 This app was created as a way to store all of my favorite recipes in one place!
 
+
+## Tech Stack
 This project uses:
 
 - React JS
 - Tailwind CSS
 - db.json: A database completely in json
 
-Functionality:
+## Functionality:
 
 - Create a new recipe
 - View a recipe
 - Edit a recipe
 - Delete a recipe
+- Create an account (in progress)
 
 ## How To Run The Project Locally
 
