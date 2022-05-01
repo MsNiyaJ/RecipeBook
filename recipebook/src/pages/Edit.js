@@ -52,49 +52,48 @@ const Edit = () => {
    */
   const imageUpload = (e) => {
     const reader = new FileReader();
-    const displayImage = document.querySelector('#display_image');
-
-    // Display the uploaded image
-    reader.addEventListener('load', () => {
-      const uploaded_image = reader.result;
-      displayImage.style.backgroundImage = `url(${uploaded_image})`;
-    });
 
     // Read the image
     if (e.target.files.length > 0) {
       reader.readAsDataURL(e.target.files[0]);
     }
-
+    
     // Store uploaded image in formData
     const imageUrl = URL.createObjectURL(e.target.files[0]);
-    formData.img = imageUrl;
+    const newFormData = {
+      ...formData,
+      img: imageUrl,
+    };
+    setFormData(newFormData);
   };
 
   /**
    * @description POST request to update the recipe, then opens the modal
-   * @param {Event} e 
+   * @param {Event} e
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await fetch(`http://localhost:3000/recipes/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ...formData,
-        }),
-    }).then((response) => {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+      }),
+    })
+      .then((response) => {
         // If the recipe was edited successfully, open the modal with no error message
         if (response.ok) {
-            setError(false);
-            setOpen(true);
+          setError(false);
+          setOpen(true);
         }
-    }).catch((error) => {
+      })
+      .catch((error) => {
         // If the recipe was not edited successfully, show an error message
         setError(true);
-    });
+      });
   };
 
   /**
@@ -179,11 +178,17 @@ const Edit = () => {
               </div>
               {/* Image */}
               <div className="flex flex-col items-center gap-2 ">
-                <div
-                  id="display_image"
-                  className="w-40 h-40 border-2 bg-center bg-cover bg-defaultrecipe"
-                  style={{ backgroundImage: `url(${formData.img})` }}
-                ></div>
+                <div className="h-52 w-72">
+                  <img
+                    src={formData.img}
+                    // if the image fails to load, replace it with the default image
+                    onError={(e) => {
+                      e.target.src = '/defaultrecipe.jpeg';
+                    }}
+                    alt={formData.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <button
                   type="button"
                   className="border-2 py-2 px-4 rounded-md hover:bg-red-600 hover:text-white relative"
