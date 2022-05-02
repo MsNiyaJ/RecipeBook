@@ -5,6 +5,8 @@ import SearchBar from '../components/SearchBar';
 import PlusIcon from '../icons/PlusIcon';
 import LinkButton from '../components/LinkButton';
 
+import { GetRecipes } from '../services/HTTPLibrary';
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,25 +15,17 @@ const Home = () => {
 
   // When the component mounts, fetch the data from the API
   useEffect(() => {
-    fetch('http://localhost:3000/recipes')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Error' + response.statusText);
-      })
-      .then((data) => {
-        setRecipes([...data]);
-      })
-      .catch((error) => {
-        // console.error('Error fetching data: ', error);
-        setError(
-          'There was a problem getting your recipes. Please try again later.'
-        );
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    GetRecipes().then((data) => {
+      // If there is no error, set the recipes to the data,
+      // otherwise set the error message
+      if (!data.error && data.response) {
+        setRecipes(data.response);
+      } else {
+        setError(data.error);
+      }
+
+      setLoading(false);
+    });
   }, []);
 
   // Filter the recipes by name based on the search value
