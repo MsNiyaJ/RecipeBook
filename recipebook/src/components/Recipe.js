@@ -43,7 +43,6 @@ const Recipe = ({ recipe, setRecipes }) => {
 
     // Delete the recipe from the database
     DeleteRecipe(id).then((response) => {
-      console.log('response', response);
       if (response.error) {
         setError(response.error);
       } else {
