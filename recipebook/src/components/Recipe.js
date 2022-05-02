@@ -4,9 +4,12 @@ import PencilIcon from '../icons/PencilIcon';
 import TrashIcon from '../icons/TrashIcon';
 import Modal from './Modal';
 
+import { DeleteRecipe } from '../services/HTTPLibrary';
+
 const Recipe = ({ recipe, setRecipes }) => {
   const { id, title, description, img } = recipe;
   const [isOpen, setIsOpen] = React.useState(false);
+  const [error, setError] = React.useState('');
 
   /**
    * When the user clicks on the eye icon, we want to navigate to the recipe
@@ -38,27 +41,21 @@ const Recipe = ({ recipe, setRecipes }) => {
   const handleDelete = (event) => {
     event.preventDefault();
 
-    // Delete from the UI
-    setRecipes((prevRecipes) =>
-      prevRecipes.filter((recipe) => recipe.id !== id)
-    );
+    // Delete the recipe from the database
+    DeleteRecipe(id).then((response) => {
+      console.log('response', response);
+      if (response.error) {
+        setError(response.error);
+      } else {
+        // Close the modal
+        setIsOpen(false);
 
-    // delete the recipe from the database
-    fetch(`http://localhost:3000/recipes/${id}`, {
-      method: 'DELETE',
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Error deleting recipe');
-      })
-      .then((data) => {
-        console.log('Recipe deleted:', id);
-      })
-      .catch((error) => {
-        return 'Error deleting recipe';
-      });
+        // Delete from the UI
+        setRecipes((prevRecipes) =>
+          prevRecipes.filter((recipe) => recipe.id !== id)
+        );
+      }
+    });
   };
 
   /**
@@ -74,32 +71,57 @@ const Recipe = ({ recipe, setRecipes }) => {
       handleDelete(event);
     }
 
-    // Close the modal after the user confirms or cancels
-    setIsOpen(false);
+    // If the user cancels the deletion, close the modal
+    if (userResponse === 'No') {
+      setIsOpen(false);
+    }
   };
+
+  const modalTitle = error
+    ? error
+    : 'Are you sure you want to delete this recipe?';
+
+  const modalErrorMessage = (
+    <div className="modal-error">
+      <p className="pb-6">
+        Can not delete a recipe at this time. Please try again later.
+      </p>
+      <button
+        type="button"
+        onClick={() => setIsOpen(false)}
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+      >
+        Close
+      </button>
+    </div>
+  );
 
   return (
     <div className="p-4 border-b-2 flex flex-col md:flex-row text-center md:text-justify items-center gap-4">
       {isOpen && (
         <Modal
-          title="Are you sure you want to delete this recipe?"
+          title={modalTitle}
           message={
-            <div className="flex gap-2 justify-center">
-              <button
-                type="button"
-                onClick={handleModal}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
-              >
-                Yes
-              </button>
-              <button
-                type="button"
-                onClick={handleModal}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
-              >
-                No
-              </button>
-            </div>
+            error ? (
+              modalErrorMessage
+            ) : (
+              <div className="flex gap-2 justify-center">
+                <button
+                  type="button"
+                  onClick={handleModal}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={handleModal}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+                >
+                  No
+                </button>
+              </div>
+            )
           }
         />
       )}

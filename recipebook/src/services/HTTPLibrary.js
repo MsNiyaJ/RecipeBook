@@ -52,3 +52,36 @@ export const AddRecipe = async (recipe) => {
 
   return { response, error };
 };
+
+/**
+ * @description PUT request to update a recipe '/recipes/:id'
+ * @param {string} id - The id of the recipe to be updated
+ * @returns {object} { response, error }
+ **/
+
+/**
+ * @description DELETE request to delete a recipe '/recipes/:id'
+ * @param {string} id - The id of the recipe to be deleted
+ * @returns {object} { response, error }
+ */
+export const DeleteRecipe = async (id) => {
+  let error;
+
+  const response = await fetch(`http://localhost:3000/recipes/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Error deleting recipe');
+    })
+    .then(() => {
+      console.log('Recipe deleted:', id);
+    })
+    .catch(() => {
+      error = 'Error deleting recipe';
+    });
+
+  return { response, error };
+};
