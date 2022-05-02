@@ -6,6 +6,8 @@ import BackButton from '../components/BackButton';
 import Modal from '../components/Modal';
 import '../global.css';
 
+import { AddRecipe } from '../services/HTTPLibrary';
+
 const Add = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
   const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
@@ -83,28 +85,11 @@ const Add = () => {
     const elements = e.target.elements;
     formatData(elements);
 
-    await fetch('http://localhost:3000/recipes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...formData,
-      }),
-    })
-      .then((response) => {
-        // If the recipe was added successfully, open the modal with no error message
-        if (response.ok) {
-          setError(false);
-          setOpen(true);
-        }
-      })
-      // If the recipe was not added successfully, show an error message
-      .catch((error) => {
-        setError(true);
-        setOpen(true);
-        // console.error('Error adding recipe: ', error);
-      });
+    // Send the form data to the database
+    AddRecipe(formData).then((data) => {
+      data.error ? setError(true) : setError(false);
+      setOpen(true);
+    });
   };
 
   /**
