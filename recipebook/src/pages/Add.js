@@ -9,30 +9,26 @@ import '../global.css';
 const Add = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
   const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
-
   const initialState = {
     title: '',
-    link: 'N/A',
+    link: '',
     img: '/defaultrecipe.jpeg',
-    description: 'No description provided',
-    prepTime: 'N/A',
-    cookTime: 'N/A',
-    servings: 'N/A',
+    description: '',
+    prepTime: '',
+    cookTime: '',
+    servings: '',
     ingredients: '',
     instructions: '',
   };
 
-  let formData = initialState;
+  const [formData, setFormData] = useState({ ...initialState });
 
+  /**
+   * @description Creates a new image url and updates the formData
+   * @param {Event} e
+   */
   const imageUpload = (e) => {
     const reader = new FileReader();
-    const displayImage = document.querySelector('#display_image');
-
-    // Display the uploaded image
-    reader.addEventListener('load', () => {
-      const uploaded_image = reader.result;
-      displayImage.style.backgroundImage = `url(${uploaded_image})`;
-    });
 
     // Read the image
     if (e.target.files.length > 0) {
@@ -41,10 +37,21 @@ const Add = () => {
 
     // Store uploaded image in formData
     const imageUrl = URL.createObjectURL(e.target.files[0]);
-    formData.img = imageUrl;
+
+    // Update the formData
+    const newFormData = {
+      ...formData,
+      img: imageUrl,
+    };
+
+    setFormData(newFormData);
   };
 
-  const setFormData = (elements) => {
+  /**
+   * @description Formats the formData to be sent to the database
+   * @param {Element[]} elements - The elements in the form
+   */
+  const formatData = (elements) => {
     let info = formData;
 
     // Loop through all elements in the form
@@ -52,18 +59,29 @@ const Add = () => {
       // Get the element
       var item = elements.item(i);
 
-      // If the element has a name and a value, update the form data
-      if (item.name && item.value) {
-        info[item.name] = item.value.trim();
+      // If the element has a name attribute, update the form data with the value
+      if (item.name) {
+        let itemValue = item.value.trim();
+
+        // Set default values for empty fields
+        if (item.value === '' && item.name === 'description') {
+          itemValue = 'No description provided';
+        } else if (item.value === '') {
+          itemValue = 'N/A';
+        }
+
+        info[item.name] = itemValue;
       }
     }
-    formData = info;
+
+    // Update the form data
+    setFormData(info);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let elements = e.target.elements;
-    setFormData(elements);
+    const elements = e.target.elements;
+    formatData(elements);
 
     await fetch('http://localhost:3000/recipes', {
       method: 'POST',
@@ -87,6 +105,20 @@ const Add = () => {
         setOpen(true);
         // console.error('Error adding recipe: ', error);
       });
+  };
+
+  /**
+   * @description Updates form data when the user changes the value of an input
+   */
+  const onChange = (e) => {
+    // Get the name and value of an input
+    const { name, value } = e.target;
+
+    // Update the value of the input in the formData
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -113,7 +145,7 @@ const Add = () => {
           }
         />
       )}
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Navbar
           leftContent={<BackButton buttonText="Recipes" />}
           centerContent="Add a Recipe"
@@ -135,15 +167,29 @@ const Add = () => {
                 required={true}
                 subText=" (100 characters)"
                 max={100}
+                value={formData.title}
+                onChange={onChange}
               />
-              <TextInput name={'link'} label={'URL'} />
+              <TextInput
+                name={'link'}
+                label={'URL'}
+                value={formData.link}
+                onChange={onChange}
+              />
             </div>
             {/* Image */}
             <div className="flex flex-col items-center gap-2 ">
-              <div
-                id="display_image"
-                className="w-40 h-40 border-2 bg-center bg-cover bg-defaultrecipe"
-              ></div>
+              <div className="h-52 w-72">
+                <img
+                  src={formData.img}
+                  // if the image fails to load, replace it with the default image
+                  onError={(e) => {
+                    e.target.src = '/defaultrecipe.jpeg';
+                  }}
+                  alt={formData.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <button
                 type="button"
                 className="border-2 py-2 px-4 rounded-md hover:bg-red-600 hover:text-white relative"
@@ -164,6 +210,8 @@ const Add = () => {
             label={'Description'}
             subText=" (280 characters)"
             max={280}
+            value={formData.description}
+            onChange={onChange}
           />
           <div className="my-8 flex flex-col md:flex-row justify-around gap-2">
             <div className="w-full md:w-1/3">
@@ -172,24 +220,42 @@ const Add = () => {
                 label={'Prep Time'}
                 subText=" (e.g. 1hr 5mins)"
                 max={100}
+                value={formData.prepTime}
+                onChange={onChange}
               />
             </div>
             <div className="w-full md:w-1/3">
-              <TextInput name={'cookTime'} label={'Cook Time'} max={100} />
+              <TextInput
+                name={'cookTime'}
+                label={'Cook Time'}
+                max={100}
+                value={formData.cookTime}
+                onChange={onChange}
+              />
             </div>
             <div className="w-full md:w-1/3">
-              <TextInput name={'servings'} label={'Servings'} max={100} />
+              <TextInput
+                name={'servings'}
+                label={'Servings'}
+                max={100}
+                value={formData.servings}
+                onChange={onChange}
+              />
             </div>
           </div>
           <TextArea
             name={'ingredients'}
             label={'Ingredients'}
             required={true}
+            value={formData.ingredients}
+            onChange={onChange}
           />
           <TextArea
             name={'instructions'}
             label={'Instructions'}
             required={true}
+            value={formData.instructions}
+            onChange={onChange}
           />
         </div>
       </form>
