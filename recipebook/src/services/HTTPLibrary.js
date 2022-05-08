@@ -54,10 +54,36 @@ export const AddRecipe = async (recipe) => {
 };
 
 /**
- * @description PUT request to update a recipe '/recipes/:id'
+ * @description PUT request to edit a recipe '/recipes/:id'
  * @param {string} id - The id of the recipe to be updated
+ * @param {object} recipe - An object containing the new recipe details
  * @returns {object} { response, error }
  **/
+export const EditRecipe = async (id, recipe) => {
+  let error;
+
+  const response = await fetch(`http://localhost:3000/recipes/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(recipe),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+
+      throw new Error();
+    })
+    .catch(() => {
+      error =
+        'There was a problem editing your recipe. Please try again later.';
+      console.log('error', error);
+    });
+
+  return { response, error };
+};
 
 /**
  * @description DELETE request to delete a recipe '/recipes/:id'

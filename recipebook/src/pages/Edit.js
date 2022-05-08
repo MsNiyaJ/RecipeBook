@@ -6,6 +6,7 @@ import BackButton from '../components/BackButton';
 import Modal from '../components/Modal';
 import { useLocation } from 'react-router-dom';
 import '../global.css';
+import { EditRecipe } from '../services/HTTPLibrary';
 
 const Edit = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
@@ -57,7 +58,7 @@ const Edit = () => {
     if (e.target.files.length > 0) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    
+
     // Store uploaded image in formData
     const imageUrl = URL.createObjectURL(e.target.files[0]);
     const newFormData = {
@@ -74,26 +75,16 @@ const Edit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:3000/recipes/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...formData,
-      }),
-    })
-      .then((response) => {
-        // If the recipe was edited successfully, open the modal with no error message
-        if (response.ok) {
-          setError(false);
-          setOpen(true);
-        }
-      })
-      .catch((error) => {
-        // If the recipe was not edited successfully, show an error message
+    EditRecipe(id, formData).then((data) => {
+      const { error } = data;
+
+      if (!error) {
+        setError(false);
+      } else {
         setError(true);
-      });
+      }
+      setOpen(true);
+    });
   };
 
   /**
