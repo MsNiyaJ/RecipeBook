@@ -22,6 +22,9 @@ This project uses:
 
 In the project directory, you can run:
 
+1. Make sure to install JSON server: `npm install -g json-server`
+2. Get the node modules: `npm install`
+
 ### `npm run dev`
 
 Concurrently runs the app in the development mode\
