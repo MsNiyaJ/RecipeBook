@@ -6,11 +6,12 @@ import BackButton from '../components/BackButton';
 import Modal from '../components/Modal';
 import { useLocation } from 'react-router-dom';
 import '../global.css';
-import { EditRecipe } from '../services/HTTPLibrary';
+
+import { EditRecipe, GetRecipeById } from '../services/HTTPLibrary';
 
 const Edit = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
-  const [error, setError] = useState(false); // Used to show an error message if a recipe can not be edited
+  const [error, setError] = useState(undefined); // Used to show an error message if a recipe can not be edited
 
   // Get the slug from the URL to get the id of the recipe
   const location = useLocation();
@@ -33,18 +34,12 @@ const Edit = () => {
 
   // Get the recipe from the database when the component mounts
   useEffect(() => {
-    fetch(`http://localhost:3000/recipes/${id}`)
-      .then((res) => {
-        if (res.ok) return res.json();
-        setError(true);
-      })
-      .then((data) => {
-        setFormData(data);
-      })
-      // If the recipe cannot be edited, show an error message
-      .catch((err) => {
-        setError(true);
-      });
+    GetRecipeById(id).then((data) => {
+      const { response: recipe, error: err } = data;
+
+      if (err) setError(err);
+      else setFormData(recipe);
+    });
   }, [id]);
 
   /**
@@ -76,13 +71,10 @@ const Edit = () => {
     e.preventDefault();
 
     EditRecipe(id, formData).then((data) => {
-      const { error } = data;
+      const { error: err } = data;
 
-      if (!error) {
-        setError(false);
-      } else {
-        setError(true);
-      }
+      if (err) setError(err);
+
       setOpen(true);
     });
   };
@@ -114,7 +106,7 @@ const Edit = () => {
           message={
             <div>
               {error
-                ? 'Can not edit this recipe at this time. Please try again later.'
+                ? error
                 : 'Go back to the recipes list and search for your recipe!'}
               <BackButton
                 containerClassName="flex justify-center pt-5"
@@ -142,7 +134,7 @@ const Edit = () => {
         {/* Error message */}
         {error && !open && (
           <div className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
-            Recipe doesn't exist
+            {error}
           </div>
         )}
 

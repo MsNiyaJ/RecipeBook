@@ -23,6 +23,30 @@ export const GetRecipes = async () => {
 };
 
 /**
+ * @description GET request to get a recipe by id '/recipes/:id'
+ * @param {string} id - The id of the recipe to get
+ * @returns {object} { response, error }
+ */
+export const GetRecipeById = async (id) => {
+  let error;
+
+  const response = await fetch(`http://localhost:3000/recipes/${id}`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+
+      throw new Error();
+    })
+    .catch(() => {
+      error =
+        'There was a problem getting your recipe. Please try again later.';
+    });
+
+  return { response, error };
+};
+
+/**
  * @description POST request to create a new recipe '/recipes'
  * @param {object} recipe - An object containing the recipe to be added
  * @returns {object} { response, error }
@@ -79,7 +103,6 @@ export const EditRecipe = async (id, recipe) => {
     .catch(() => {
       error =
         'There was a problem editing your recipe. Please try again later.';
-      console.log('error', error);
     });
 
   return { response, error };
