@@ -4,6 +4,8 @@ import RecipeData from '../components/RecipeData';
 import { useLocation } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 
+import { GetRecipeById } from '../services/HTTPLibrary';
+
 const View = () => {
   // Get the slug from the URL. The slug represents the id of the recipe
   const location = useLocation();
@@ -14,27 +16,11 @@ const View = () => {
 
   // When the component mounts, fetch the recipe from the API
   useEffect(() => {
-    fetch(`http://localhost:3000/recipes/${id}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        if (response.status === 404) {
-          throw new Error('Recipe not found');
-        }
-        throw new Error('Error fetching recipe data');
-      })
-      .then((data) => {
-        setRecipe(data);
-      })
-      .catch((error) => {
-        if (error.message === 'Failed to fetch') {
-          setError('Error fetching recipe data');
-        } else {
-          setError(error.message);
-        }
-        // console.error('Error fetching recipe data: ', error.message);
-      });
+    GetRecipeById(id).then((data) => {
+      const { response: recipe, error: err } = data;
+      if (err) setError(err);
+      else setRecipe(recipe);
+    });
   }, [id]);
 
   return (
