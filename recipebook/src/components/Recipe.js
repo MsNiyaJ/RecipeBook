@@ -4,6 +4,7 @@ import PencilIcon from '../icons/PencilIcon';
 import TrashIcon from '../icons/TrashIcon';
 import Modal from './Modal';
 
+import ReactTooltip from 'react-tooltip';
 import { DeleteRecipe } from '../services/HTTPLibrary';
 
 const Recipe = ({ recipe, setRecipes }) => {
@@ -143,9 +144,20 @@ const Recipe = ({ recipe, setRecipes }) => {
       </div>
       {/* Actions */}
       <div className="w-1/3 place-content-center flex gap-2">
-        <OpenEye onClick={(e) => handleView(e)} />
-        <PencilIcon onClick={(e) => handleEdit(e)} />
-        <TrashIcon onClick={() => setIsOpen(true)} />
+        <ReactTooltip place="top" type="dark" effect="solid" />
+        <a data-tip="View">
+          <OpenEye onClick={(e) => handleView(e)} />
+        </a>
+
+        <ReactTooltip place="top" type="dark" effect="solid" />
+        <a data-tip="Edit">
+          <PencilIcon onClick={(e) => handleEdit(e)} />
+        </a>
+
+        <ReactTooltip place="top" type="dark" effect="solid" />
+        <a data-tip="Delete">
+          <TrashIcon onClick={() => setIsOpen(true)} />
+        </a>
       </div>
     </div>
   );
