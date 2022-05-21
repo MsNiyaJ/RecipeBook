@@ -14,7 +14,7 @@ const BackButton = ({
         buttonStyle="flex gap-2"
         buttonContent={
           <div className={buttonClassName}>
-            <ChevronLeft />{' '}
+            <ChevronLeft />
             <span className="hidden md:block">{buttonText}</span>
           </div>
         }
