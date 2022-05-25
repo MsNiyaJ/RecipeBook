@@ -1,4 +1,22 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "leanne@gmail.com",
+      "password": "123456",
+      "recipes": ["1", "2"]
+    },
+    {
+      "id": "2",
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "ervin@gmail.com",
+      "password": "mypassword",
+      "recipes": ["vUaPIY7", "i7SO7nF"]
+    }
+  ],
   "recipes": [
     {
       "id": "1",

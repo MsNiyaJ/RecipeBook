@@ -134,3 +134,26 @@ export const DeleteRecipe = async (id) => {
 
   return { response, error };
 };
+
+/**
+ * @description GET request to get users '/users'
+ * @returns {object} { response, error }
+ */
+export const GetUsers = async () => {
+  let error;
+
+  const response = await fetch('http://localhost:3000/users')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      return [...data];
+    })
+    .catch(() => {
+      error = 'There was a problem logging in. Please try again later.';
+    });
+
+  return { response, error };
+};
