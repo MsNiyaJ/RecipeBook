@@ -131,7 +131,7 @@ const Recipe = ({ recipe, setRecipes }) => {
           src={img}
           // if the image fails to load, replace it with the default image
           onError={(e) => {
-            e.target.src = '/defaultrecipe.jpeg';
+            e.target.src = '/images/recipes/defaultrecipe.jpeg';
           }}
           alt={title}
           className="w-full h-full object-cover"
@@ -145,19 +145,19 @@ const Recipe = ({ recipe, setRecipes }) => {
       {/* Actions */}
       <div className="w-1/3 place-content-center flex gap-2">
         <ReactTooltip place="top" type="dark" effect="solid" />
-        <a data-tip="View">
+        <div data-tip="View">
           <OpenEye onClick={(e) => handleView(e)} />
-        </a>
+        </div>
 
         <ReactTooltip place="top" type="dark" effect="solid" />
-        <a data-tip="Edit">
+        <div data-tip="Edit">
           <PencilIcon onClick={(e) => handleEdit(e)} />
-        </a>
+        </div>
 
         <ReactTooltip place="top" type="dark" effect="solid" />
-        <a data-tip="Delete">
+        <div data-tip="Delete">
           <TrashIcon onClick={() => setIsOpen(true)} />
-        </a>
+        </div>
       </div>
     </div>
   );

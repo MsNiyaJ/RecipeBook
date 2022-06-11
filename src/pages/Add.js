@@ -14,7 +14,7 @@ const Add = () => {
   const initialState = {
     title: '',
     link: '',
-    img: '/defaultrecipe.jpeg',
+    img: '/images/recipes/defaultrecipe.jpeg',
     description: '',
     prepTime: '',
     cookTime: '',
@@ -169,7 +169,7 @@ const Add = () => {
                   src={formData.img}
                   // if the image fails to load, replace it with the default image
                   onError={(e) => {
-                    e.target.src = '/defaultrecipe.jpeg';
+                    e.target.src = '/images/recipes/defaultrecipe.jpeg';
                   }}
                   alt={formData.title}
                   className="w-full h-full object-cover"

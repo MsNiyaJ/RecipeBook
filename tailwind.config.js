@@ -9,7 +9,7 @@ module.exports = {
         32: '8rem',
       },
       backgroundImage: {
-        defaultrecipe: "url('../public/defaultrecipe.jpeg')",
+        defaultrecipe: "url('../public/recipes/defaultrecipe.jpeg')",
       },
     },
   },

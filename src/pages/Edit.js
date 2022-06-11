@@ -21,7 +21,7 @@ const Edit = () => {
   let initialState = {
     title: '',
     link: 'N/A',
-    img: '/defaultrecipe.jpeg',
+    img: '/images/recipes/defaultrecipe.jpeg',
     description: 'No description provided',
     prepTime: 'N/A',
     cookTime: 'N/A',
@@ -166,7 +166,7 @@ const Edit = () => {
                     src={formData.img}
                     // if the image fails to load, replace it with the default image
                     onError={(e) => {
-                      e.target.src = '/defaultrecipe.jpeg';
+                      e.target.src = '/images/recipes/defaultrecipe.jpeg';
                     }}
                     alt={formData.title}
                     className="w-full h-full object-cover"

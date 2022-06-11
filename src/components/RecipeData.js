@@ -12,7 +12,7 @@ const RecipeData = ({ recipe }) => {
             className="h-full w-full object-cover border border-red-500"
             src={img}
             onError={(e) => {
-              e.target.src = '/defaultrecipe.jpeg'; // if the image fails to load, replace it with the default image
+              e.target.src = '/images/recipes/defaultrecipe.jpeg'; // if the image fails to load, replace it with the default image
             }}
             alt={title}
           />

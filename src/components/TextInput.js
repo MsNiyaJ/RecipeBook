@@ -14,7 +14,9 @@ import '../global.css';
 const TextInput = ({
   name,
   label,
+  type = 'text',
   required = false,
+  asterisk = true,
   max,
   subText = '',
   value = '',
@@ -24,11 +26,11 @@ const TextInput = ({
     <label htmlFor={name}>
       <p>
         {label}
-        <span className="text-red-600">{required && '*'}</span>
+        <span className="text-red-600">{required && asterisk && '*'}</span>
         <span className="text-gray-400 italic">{subText}</span>
       </p>
       <input
-        type={name}
+        type={type}
         name={name}
         id={name}
         className="textField"
