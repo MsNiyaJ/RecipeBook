@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkButton from '../components/LinkButton';
+import LinkButton from './LinkButton';
 import ChevronLeft from '../icons/ChevronLeft';
 
 const BackButton = ({
