@@ -47,6 +47,18 @@ describe('Manage Recipes', () => {
         .should('have.attr', 'src')
         .should('not.include', '/images/recipes/defaultrecipe.jpeg');
     });
+
+    it('wont add a recipe if input is invalid', () => {
+      // Visit the add page
+      cy.get('[data-testid="add-new-recipe-button"]').click();
+
+      // Submit form
+      cy.get('[data-testid="save-recipe-button"]').click();
+
+      // Assert that the recipe was not added
+      cy.contains('Your Recipe Has Been Added!').should('not.exist');
+      cy.url().should('include', '/add');
+    });
   });
 
   // Delete a Recipe
