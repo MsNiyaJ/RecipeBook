@@ -3,7 +3,7 @@ import 'cypress-file-upload';
 import { RecipeType } from '../../src/types/types';
 
 // ***********************************************
-// This file is where you will create Custom 
+// This file is where you will create Custom
 // commands and overwrite existing commands.
 //
 // For more comprehensive examples of custom
@@ -22,12 +22,8 @@ Cypress.Commands.add('addrecipe', (recipe: RecipeType) => {
   cy.get("input[name='cookTime']").type(recipe.cookTime);
   cy.get("input[name='servings']").type(recipe.servings);
   cy.get("textarea[name='description']").type(recipe.description);
-  cy.get("textarea[name='ingredients']").type(
-    recipe.ingredients.join('\n')
-  );
-  cy.get("textarea[name='instructions']").type(
-    recipe.instructions.join('\n')
-  );
+  cy.get("textarea[name='ingredients']").type(recipe.ingredients.join('\n'));
+  cy.get("textarea[name='instructions']").type(recipe.instructions.join('\n'));
   // Submit form
   cy.get('[data-testid="save-recipe-button"]').click();
 
@@ -38,10 +34,15 @@ Cypress.Commands.add('addrecipe', (recipe: RecipeType) => {
   cy.contains(/Back To Recipes/i).click();
 });
 
+Cypress.Commands.add('getByTestId', (testId: string) => {
+  return cy.get(`[data-testid="${testId}"]`);
+});
+
 declare global {
   namespace Cypress {
     interface Chainable {
       addrecipe(recipe: RecipeType): Chainable<void>;
+      getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
     }
   }
 }
