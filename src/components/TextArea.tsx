@@ -1,5 +1,15 @@
 import React from 'react';
 
+export type TextAreaType = {
+  name: string;
+  label: string;
+  required?: boolean;
+  max?: number;
+  subText?: string;
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+};
+
 const TextArea = ({
   name,
   label,
@@ -8,7 +18,7 @@ const TextArea = ({
   subText = '',
   value = '',
   onChange = () => {},
-}) => {
+}: TextAreaType) => {
   return (
     <label htmlFor={name}>
       <p>

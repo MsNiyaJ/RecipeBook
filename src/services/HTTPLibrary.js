@@ -62,7 +62,6 @@ export const AddRecipe = async (recipe) => {
     body: JSON.stringify(recipe),
   })
     .then((response) => {
-      console.log('response', response);
       if (response.ok) {
         return response.json();
       }

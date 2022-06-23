@@ -128,10 +128,11 @@ const Recipe = ({ recipe, setRecipes }) => {
       {/* Image */}
       <div className="h-52 w-72">
         <img
+          data-testid="recipe-image"
           src={img}
           // if the image fails to load, replace it with the default image
-          onError={(e) => {
-            e.target.src = '/images/recipes/defaultrecipe.jpeg';
+          onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+            e.currentTarget.src = '/images/recipes/defaultrecipe.jpeg';
           }}
           alt={title}
           className="w-full h-full object-cover"

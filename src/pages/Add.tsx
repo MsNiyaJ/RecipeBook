@@ -136,6 +136,7 @@ const Add = () => {
           centerContent="Add a Recipe"
           rightContent={
             <button
+              data-testid="save-recipe-button"
               type="submit"
               className="border rounded-md flex items-center p-2 gap-2 text-xs md:text-lg hover:bg-white hover:text-black"
             >
@@ -168,8 +169,8 @@ const Add = () => {
                 <img
                   src={formData.img}
                   // if the image fails to load, replace it with the default image
-                  onError={(e) => {
-                    e.target.src = '/images/recipes/defaultrecipe.jpeg';
+                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                    e.currentTarget.src = '/images/recipes/defaultrecipe.jpeg';
                   }}
                   alt={formData.title}
                   className="w-full h-full object-cover"

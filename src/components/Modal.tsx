@@ -1,7 +1,7 @@
 import React from 'react';
 import '../global.css';
 
-const Modal = ({ className, title, titleColor = 'text-red-500', message }) => {
+const Modal = ({ className="", title, titleColor = 'text-red-500', message }) => {
   return (
     <div className="modal-container">
       <div className={`modal ${className}`}>

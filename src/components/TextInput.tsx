@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 import '../global.css';
 
 /**
@@ -9,8 +9,20 @@ import '../global.css';
  * @param {number} max The max number of characters allowed
  * @param {string} subText Additional text to display next to the the label
  * @param {string} value The value of the input
- * @param {Function`} onChange The function to call when the input changes
+ * @param {ChangeEventHandler<HTMLInputElement>} onChange The function to call when the input changes
  */
+export type TextInputType = {
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  asterisk?: boolean;
+  max?: number;
+  subText?: string;
+  value?: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+};
+
 const TextInput = ({
   name,
   label,
@@ -20,8 +32,8 @@ const TextInput = ({
   max,
   subText = '',
   value = '',
-  onChange = () => {},
-}) => {
+  onChange,
+}: TextInputType) => {
   return (
     <label htmlFor={name}>
       <p>
