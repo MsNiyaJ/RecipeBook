@@ -8,6 +8,7 @@ const PageNotFound = () => {
       <Navbar
         leftContent={<BackButton buttonText="Recipes" />}
         centerContent="Recipe Collection"
+        rightContent={undefined}
       />
       <div className="relative flex justify-center items-center pt-40">
         <img
@@ -16,7 +17,7 @@ const PageNotFound = () => {
           className="not-found"
         />
         <div className="absolute text-center font-bold text-5xl md:text-7xl">
-          <p className='p-2'>404</p> 
+          <p className="p-2">404</p>
           <p>Page Not Found</p>
         </div>
       </div>

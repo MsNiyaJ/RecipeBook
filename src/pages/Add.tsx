@@ -7,11 +7,13 @@ import Modal from '../components/Modal';
 import '../global.css';
 
 import { AddRecipe } from '../services/HTTPLibrary';
+import { RecipeType } from '../types/types';
 
 const Add = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
   const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
   const initialState = {
+    id: '',
     title: '',
     link: '',
     img: '/images/recipes/defaultrecipe.jpeg',
@@ -23,7 +25,7 @@ const Add = () => {
     instructions: '',
   };
 
-  const [formData, setFormData] = useState({ ...initialState });
+  const [formData, setFormData] = useState<RecipeType>({ ...initialState });
 
   /**
    * @description Creates a new image url and updates the formData
@@ -169,7 +171,9 @@ const Add = () => {
                 <img
                   src={formData.img}
                   // if the image fails to load, replace it with the default image
-                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  onError={(
+                    e: React.SyntheticEvent<HTMLImageElement, Event>
+                  ) => {
                     e.currentTarget.src = '/images/recipes/defaultrecipe.jpeg';
                   }}
                   alt={formData.title}

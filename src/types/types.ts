@@ -7,6 +7,6 @@ export type RecipeType = {
   prepTime: string;
   cookTime: string;
   servings: string;
-  ingredients: string[];
-  instructions: string[];
+  ingredients: string;
+  instructions: string;
 };

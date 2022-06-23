@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import '../global.css';
 
 import { EditRecipe, GetRecipeById } from '../services/HTTPLibrary';
+import { RecipeType } from '../types/types';
 
 const Edit = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
@@ -19,6 +20,7 @@ const Edit = () => {
 
   // The initial state of the form
   let initialState = {
+    id: '',
     title: '',
     link: 'N/A',
     img: '/images/recipes/defaultrecipe.jpeg',
@@ -30,7 +32,7 @@ const Edit = () => {
     instructions: '',
   };
 
-  const [formData, setFormData] = useState({ ...initialState });
+  const [formData, setFormData] = useState<RecipeType>({ ...initialState });
 
   // Get the recipe from the database when the component mounts
   useEffect(() => {

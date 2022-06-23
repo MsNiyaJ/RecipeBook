@@ -1,3 +1,5 @@
+import { RecipeType } from '../types/types';
+
 /**
  * @description GET request to get all recipes '/recipes'
  * @returns {object} - { response, error }
@@ -27,7 +29,7 @@ export const GetRecipes = async () => {
  * @param {string} id - The id of the recipe to get
  * @returns {object} { response, error }
  */
-export const GetRecipeById = async (id) => {
+export const GetRecipeById = async (id: string) => {
   let error;
 
   const response = await fetch(`http://localhost:3000/recipes/${id}`)
@@ -51,7 +53,7 @@ export const GetRecipeById = async (id) => {
  * @param {object} recipe - An object containing the recipe to be added
  * @returns {object} { response, error }
  */
-export const AddRecipe = async (recipe) => {
+export const AddRecipe = async (recipe: RecipeType) => {
   let error;
 
   const response = await fetch('http://localhost:3000/recipes', {
@@ -82,7 +84,7 @@ export const AddRecipe = async (recipe) => {
  * @param {object} recipe - An object containing the new recipe details
  * @returns {object} { response, error }
  **/
-export const EditRecipe = async (id, recipe) => {
+export const EditRecipe = async (id: string, recipe: RecipeType) => {
   let error;
 
   const response = await fetch(`http://localhost:3000/recipes/${id}`, {
@@ -112,7 +114,7 @@ export const EditRecipe = async (id, recipe) => {
  * @param {string} id - The id of the recipe to be deleted
  * @returns {object} { response, error }
  */
-export const DeleteRecipe = async (id) => {
+export const DeleteRecipe = async (id: string) => {
   let error;
 
   const response = await fetch(`http://localhost:3000/recipes/${id}`, {
@@ -139,7 +141,7 @@ export const DeleteRecipe = async (id) => {
  * @returns {object} { response, error }
  */
 export const GetUsers = async () => {
-  let error;
+  let error: string;
 
   const response = await fetch('http://localhost:3000/users')
     .then((response) => {
