@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Pancakes",
+    "link": "N/A",
+    "img": "/images/pancakes.jpg",
+    "description": "Simple pancakes using Aunt Jemima's pancake mix",
+    "prepTime": "5 minutes",
+    "cookTime": "8 minutes",
+    "servings": "3",
+    "ingredients": [
+      "1 cup pancake mix",
+      "1 cup milk",
+      "1/2 cup butter, melted",
+      "1/2 cup sugar",
+      "1/2 cup water",
+      "1 egg",
+      "1/2 teaspoon salt",
+      "1/2 teaspoon pepper"
+    ],
+    "instructions": [
+      "Mix all ingredients together in a bowl.",
+      "Heat a nonstick pan over medium heat.",
+      "Butter the pan.",
+      "Pour batter into pan.",
+      "Cook until bubbles appear on the surface and the edges are cooked.",
+      "Flip and cook until browned and cooked through.",
+      "Serve immediately."
+    ]
+  }
+]
