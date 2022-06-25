@@ -11,7 +11,7 @@ import { RecipeType } from '../../src/types/types';
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('addrecipe', (recipe: RecipeType) => {
+Cypress.Commands.add('addRecipe', (recipe: RecipeType) => {
   cy.get('[data-testid="add-new-recipe-button"]').click();
 
   // Insert recipe data
@@ -34,6 +34,21 @@ Cypress.Commands.add('addrecipe', (recipe: RecipeType) => {
   cy.contains(/Back To Recipes/i).click();
 });
 
+Cypress.Commands.add('deleteRecipeByName', (recipe: RecipeType) => {
+  cy.contains(recipe.title)
+    .parent()
+    .parent()
+    .within(() => {
+      cy.getByTestId('trash-icon').click();
+
+      // Assert that the user confirms the deletion
+      cy.contains('Are you sure you want to delete this recipe?').should(
+        'exist'
+      );
+      cy.contains('Yes').click();
+    });
+});
+
 Cypress.Commands.add('getByTestId', (testId: string) => {
   return cy.get(`[data-testid="${testId}"]`);
 });
@@ -41,7 +56,8 @@ Cypress.Commands.add('getByTestId', (testId: string) => {
 declare global {
   namespace Cypress {
     interface Chainable {
-      addrecipe(recipe: RecipeType): Chainable<void>;
+      addRecipe(recipe: RecipeType): Chainable<void>;
+      deleteRecipeByName(recipe: RecipeType): Chainable<void>;
       getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
     }
   }

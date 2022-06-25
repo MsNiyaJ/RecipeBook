@@ -1,7 +1,7 @@
 // <reference types="cypress" />
 import { RecipeType } from '../../src/types/types';
 
-const recipes = require('../fixtures/recipes.json');
+const recipes: RecipeType[] = require('../fixtures/recipes.json');
 
 describe('Manage Recipes', () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('Manage Recipes', () => {
 
     it('adds a recipe', () => {
       const recipe: RecipeType = recipes[0];
-      cy.addrecipe(recipe);
+      cy.addRecipe(recipe);
       cy.contains(recipes[0].title).should('exist');
       cy.contains(recipes[0].description).should('exist');
 
@@ -27,7 +27,7 @@ describe('Manage Recipes', () => {
         .should('not.include', '/images/recipes/defaultrecipe.jpeg');
     });
 
-    it('wont add a recipe if input is invalid', () => {
+    it('wont add a recipe if fields are missing', () => {
       // Visit the add page
       cy.getByTestId('add-new-recipe-button').click();
 
@@ -40,31 +40,53 @@ describe('Manage Recipes', () => {
     });
   });
 
+  // Edit a Recipe
+  describe('Edit a Recipe', () => {
+    it('routes to the edit page', () => {
+      cy.getByTestId('pencil-icon').last().click();
+      cy.url().should('include', '/edit');
+    });
+
+    it('edits a recipe', () => {
+      const newDescription: string = 'Simple ingredients made from scratch';
+      const originalDescription: string = recipes[0].description;
+
+      // Assert that description is correct
+      cy.getByTestId('recipe-description').last().contains(originalDescription);
+
+      // Edit the last recipe
+      cy.getByTestId('pencil-icon').last().click();
+      cy.url().should('include', '/edit');
+
+      // Clear the description box
+      cy.get("textarea[name='description']").clear();
+
+      // Edit recipe data
+      cy.get("textarea[name='description']").type(newDescription);
+
+      // Submit form
+      cy.get("button[type='submit']").click();
+
+      // Assert that the recipe was edited
+      cy.contains('Your Recipe Has Been Edited!').should('exist');
+
+      // Visit the home page, and assert that the recipe was edited
+      cy.contains('Back to Recipes').click();
+      cy.contains(newDescription).should('not.equal', originalDescription);
+    });
+  });
+
+  // View a Recipe
+  describe('View a Recipe', () => {});
+
   // Delete a Recipe
   describe('Delete a Recipe', () => {
     it('deletes a recipe', () => {
       // Delete recipe
-      cy.contains(recipes[0].title)
-        .parent()
-        .parent()
-        .within(() => {
-          cy.getByTestId('trash-icon').click();
-
-          // Assert that the user confirms the deletion
-          cy.contains('Are you sure you want to delete this recipe?').should(
-            'exist'
-          );
-          cy.contains('Yes').click();
-        });
+      cy.deleteRecipeByName(recipes[0]);
 
       // Assert that the recipe was deleted
       cy.contains(recipes[0].title).should('not.exist');
     });
   });
-
-  // Edit a Recipe
-  describe('Edit a Recipe', () => {});
-
-  // View a Recipe
-  describe('View a Recipe', () => {});
 });

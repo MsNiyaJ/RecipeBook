@@ -97,7 +97,10 @@ const Recipe = ({ recipe, setRecipes }) => {
   );
 
   return (
-    <div className="p-4 border-b-2 flex flex-col md:flex-row text-center md:text-justify items-center gap-4">
+    <div
+      id={id}
+      className="p-4 border-b-2 flex flex-col md:flex-row text-center md:text-justify items-center gap-4"
+    >
       {isOpen && (
         <Modal
           title={modalTitle}
@@ -141,7 +144,7 @@ const Recipe = ({ recipe, setRecipes }) => {
       {/* Title & Description */}
       <div className="w-full md:w-5/6">
         <h1 className="font-mono font-semibold">{title}</h1>
-        <p>{description}</p>
+        <p data-testid="recipe-description">{description}</p>
       </div>
       {/* Actions */}
       <div className="w-1/3 place-content-center flex gap-2">

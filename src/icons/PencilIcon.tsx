@@ -2,7 +2,7 @@ import React from 'react';
 
 const PencilIcon = ({ onClick }) => {
   return (
-    <div onClick={onClick}>
+    <div data-testid="pencil-icon" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5 cursor-pointer"

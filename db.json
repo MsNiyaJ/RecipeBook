@@ -6,7 +6,10 @@
       "username": "Bret",
       "email": "leanne@gmail.com",
       "password": "123456",
-      "recipes": ["1", "2"]
+      "recipes": [
+        "1",
+        "2"
+      ]
     },
     {
       "id": "2",
@@ -14,7 +17,10 @@
       "username": "Antonette",
       "email": "ervin@gmail.com",
       "password": "mypassword",
-      "recipes": ["vUaPIY7", "i7SO7nF"]
+      "recipes": [
+        "vUaPIY7",
+        "i7SO7nF"
+      ]
     }
   ],
   "recipes": [
