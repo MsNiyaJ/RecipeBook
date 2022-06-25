@@ -73,7 +73,7 @@ const Home = () => {
         </p>
       )}
       {filteredRecipes && !loading && !error && (
-        <div className="border-x-2">
+        <div data-testid="recipes-list" className="border-x-2">
           {filteredRecipes.length > 0 ? (
             // Display all recipes
             filteredRecipes.map((recipe) => {

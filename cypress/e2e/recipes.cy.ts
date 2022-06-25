@@ -41,6 +41,16 @@ describe('Manage Recipes', () => {
     });
   });
 
+  // Find a Recipe
+  describe('Find a Recipe', () => {
+    it('can search for recipe by name', () => {
+      cy.getByTestId('search-bar').type(recipes[0].title);
+      cy.getByTestId('recipes-list').within(() => {
+        cy.contains(recipes[0].title).should('exist');
+      });
+    });
+  });
+
   // View a Recipe
   describe('View a Recipe', () => {
     it('routes to the view page', () => {

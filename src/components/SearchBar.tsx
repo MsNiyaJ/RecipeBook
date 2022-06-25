@@ -7,7 +7,7 @@ const SearchBar = ({ setSearch, containerClass, inputClass, placeholder }) => {
   };
 
   return (
-    <div className={containerClass}>
+    <div data-testid="search-bar" className={containerClass}>
       <input
         className={inputClass}
         placeholder={placeholder}
