@@ -3,6 +3,7 @@ import { RecipeType } from '../../src/types/types';
 
 const recipes: RecipeType[] = require('../fixtures/recipes.json');
 
+// This test file will only pass if you run all of them in order.
 describe('Manage Recipes', () => {
   beforeEach(() => {
     cy.visit('localhost:3001');
@@ -37,6 +38,24 @@ describe('Manage Recipes', () => {
       // Assert that the recipe was not added
       cy.contains('Your Recipe Has Been Added!').should('not.exist');
       cy.url().should('include', '/add');
+    });
+  });
+
+  // View a Recipe
+  describe('View a Recipe', () => {
+    it('routes to the view page', () => {
+      cy.getByTestId('eye-icon').last().click();
+      cy.url().should('include', '/view');
+    }).timeout(5000);
+
+    it('views a recipe', () => {
+      cy.getByTestId('eye-icon').last().click();
+      cy.contains(recipes[0].servings).should('exist');
+      cy.contains(recipes[0].prepTime).should('exist');
+      cy.contains(recipes[0].cookTime).should('exist');
+      cy.contains(recipes[0].title).should('exist');
+      cy.contains(recipes[0].ingredients[0]).should('exist');
+      cy.contains(recipes[0].instructions[0]).should('exist');
     });
   });
 
@@ -75,9 +94,6 @@ describe('Manage Recipes', () => {
       cy.contains(newDescription).should('not.equal', originalDescription);
     });
   });
-
-  // View a Recipe
-  describe('View a Recipe', () => {});
 
   // Delete a Recipe
   describe('Delete a Recipe', () => {

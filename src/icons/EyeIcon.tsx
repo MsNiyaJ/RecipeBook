@@ -2,7 +2,7 @@ import React from 'react';
 
 const OpenEye = ({ onClick }) => {
   return (
-    <div onClick={onClick}>
+    <div data-testid="eye-icon" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-8 cursor-pointer"
