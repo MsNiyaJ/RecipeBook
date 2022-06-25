@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Recipe from '../components/Recipe';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 import PlusIcon from '../icons/PlusIcon';
@@ -7,6 +6,7 @@ import LinkButton from '../components/LinkButton';
 
 import { RecipeType } from '../types/types';
 import { GetRecipes } from '../services/HTTPLibrary';
+import Recipes from '../components/Recipes';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -73,26 +73,7 @@ const Home = () => {
         </p>
       )}
       {filteredRecipes && !loading && !error && (
-        <div data-testid="recipes-list" className="border-x-2">
-          {filteredRecipes.length > 0 ? (
-            // Display all recipes
-            filteredRecipes.map((recipe) => {
-              return (
-                <Recipe
-                  key={recipe.id}
-                  recipe={recipe}
-                  setRecipes={setRecipes}
-                />
-              );
-            })
-          ) : (
-            // If no recipes are found, display a message
-            <div className="flex justify-center items-center text-center text-gray-600 md:text-2xl py-52">
-              No recipes found. <br />
-              Add a new recipe by clicking on the add button above!
-            </div>
-          )}
-        </div>
+        <Recipes recipes={filteredRecipes} setRecipes={setRecipes} />
       )}
     </div>
   );
