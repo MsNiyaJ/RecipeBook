@@ -6,6 +6,12 @@ export type RecipeType = {
   prepTime: string;
   cookTime: string;
   servings: string;
-  ingredients: string; // TODO: change to string array
-  instructions: string; // TODO: change to string array
+  ingredients: string[];
+  instructions: string[];
+};
+
+export type DropdownType = {
+  title?: string;
+  data: string[];
+  type?: 'checkbox' | 'text' | 'numbered';
 };
