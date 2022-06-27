@@ -35,7 +35,7 @@ const Home = () => {
   );
 
   return (
-    <div className="bg-white h-screen pt-20 md:pt-32">
+    <div className="bg-white h-screen">
       <Navbar
         leftContent={
           <SearchBar
