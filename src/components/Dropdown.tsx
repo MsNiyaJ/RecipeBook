@@ -4,7 +4,7 @@ import DropdownContent from './DropdownContent';
 import { DropdownType } from '../types/types';
 
 const Dropdown = ({ title, data, type = 'checkbox' }: DropdownType) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const state = { isOpen, setIsOpen };
   return (
     <div className={styles.containerClass}>
