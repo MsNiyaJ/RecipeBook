@@ -5,13 +5,14 @@ import { useLocation } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 
 import { GetRecipeById } from '../services/HTTPLibrary';
+import { RecipeType } from '../types/types';
 
 const View = () => {
   // Get the slug from the URL. The slug represents the id of the recipe
   const location = useLocation();
   const id = location.pathname.split('/')[2];
 
-  const [recipe, setRecipe] = useState(null); // Set initial state for the recipe
+  const [recipe, setRecipe] = useState<RecipeType | null>(null); // Set initial state for the recipe
   const [error, setError] = useState(null); // Set initial error state
 
   // When the component mounts, fetch the recipe from the API
@@ -35,9 +36,7 @@ const View = () => {
           {error}
         </p>
       )}
-      <div className="text-center text-gray-600 md:text-2xl">
-        {recipe && <RecipeData recipe={recipe} />}
-      </div>
+      {recipe && <RecipeData recipe={recipe} />}
     </div>
   );
 };
