@@ -1,5 +1,4 @@
 export type RecipeType = {
-  id: string;
   title: string;
   link: string;
   img: string;
@@ -7,6 +6,6 @@ export type RecipeType = {
   prepTime: string;
   cookTime: string;
   servings: string;
-  ingredients: string[]; // TODO: change to string array
-  instructions: string[]; // TODO: change to string array
+  ingredients: string; // TODO: change to string array
+  instructions: string; // TODO: change to string array
 };

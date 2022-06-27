@@ -12,8 +12,7 @@ import { RecipeType } from '../types/types';
 const Add = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
   const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
-  const initialState = {
-    id: '',
+  const initialState: RecipeType = {
     title: '',
     link: '',
     img: '/images/recipes/defaultrecipe.jpeg',
@@ -109,7 +108,7 @@ const Add = () => {
   };
 
   return (
-    <div className="bg-white pt-14 md:pt-28">
+    <div className="bg-white">
       {open && (
         <Modal
           className="flex flex-col justify-center items-center text-center"
@@ -209,6 +208,7 @@ const Add = () => {
                 name={'prepTime'}
                 label={'Prep Time'}
                 subText=" (e.g. 1hr 5mins)"
+                // TODO: SET A SMALLER MAX CHAR FOR PREP TIME, COOKTIME, AND SERVINGS
                 max={100}
                 value={formData.prepTime}
                 onChange={onChange}
@@ -233,6 +233,8 @@ const Add = () => {
               />
             </div>
           </div>
+          {/* TODO: Convert to multiple inputs per ingredients and instructions. 
+          This will allows us to store all ingredients and instructions as a string[]  */}
           <TextArea
             name={'ingredients'}
             label={'Ingredients'}
