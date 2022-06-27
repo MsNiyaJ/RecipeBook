@@ -64,7 +64,15 @@ describe('Manage Recipes', () => {
       cy.contains(recipes[0].prepTime).should('exist');
       cy.contains(recipes[0].cookTime).should('exist');
       cy.contains(recipes[0].title).should('exist');
+
+      // When you click the ingredients button, it should show the ingredients
+      cy.contains(recipes[0].ingredients[0]).should('not.exist');
+      cy.getByTestId('dropdown-header-Ingredients').click();
       cy.contains(recipes[0].ingredients[0]).should('exist');
+
+      // When you click the instructions button, it should show the instructions
+      cy.contains(recipes[0].instructions[0]).should('not.exist');
+      cy.getByTestId('dropdown-header-Instructions').click();
       cy.contains(recipes[0].instructions[0]).should('exist');
     });
   });
