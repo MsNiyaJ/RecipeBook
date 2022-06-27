@@ -4,8 +4,6 @@ import CheckboxItem from './CheckboxItem';
 import NumberedItem from './NumberedItem';
 
 const DropdownContent = ({ data, type = 'text' }: DropdownType) => {
-  console.log('DropdownContent data: ', data);
-
   return (
     <div className="mx-10">
       {type === 'checkbox' &&

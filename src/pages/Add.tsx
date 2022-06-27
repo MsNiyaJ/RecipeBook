@@ -20,8 +20,8 @@ const Add = () => {
     prepTime: '',
     cookTime: '',
     servings: '',
-    ingredients: '',
-    instructions: '',
+    ingredients: [],
+    instructions: [],
   };
 
   const [formData, setFormData] = useState<RecipeType>({ ...initialState });
@@ -65,6 +65,11 @@ const Add = () => {
       // If the element has a name attribute, update the form data with the value
       if (item.name) {
         let itemValue = item.value.trim();
+
+        // If the element is ingredients or instructions, split the value into an array
+        if (item.name === 'ingredients' || item.name === 'instructions') {
+          itemValue = itemValue.split('\n');
+        }
 
         // Set default values for empty fields
         if (item.value === '' && item.name === 'description') {
@@ -233,11 +238,10 @@ const Add = () => {
               />
             </div>
           </div>
-          {/* TODO: Convert to multiple inputs per ingredients and instructions. 
-          This will allows us to store all ingredients and instructions as a string[]  */}
           <TextArea
             name={'ingredients'}
             label={'Ingredients'}
+            subText=" (Please put each ingredient on its own line.)"
             required={true}
             value={formData.ingredients}
             onChange={onChange}
@@ -245,6 +249,7 @@ const Add = () => {
           <TextArea
             name={'instructions'}
             label={'Instructions'}
+            subText=" (Please put each instruction on its own line.)"
             required={true}
             value={formData.instructions}
             onChange={onChange}
