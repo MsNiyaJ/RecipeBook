@@ -15,7 +15,7 @@ const Dropdown = ({ title, data, type = 'checkbox' }: DropdownType) => {
 };
 
 const styles = {
-  containerClass: 'mx-2 sm:ml-24 sm:mr-10 md:mx-28 lg:mx-48 max-w-2xl',
+  containerClass: 'mx-2 sm:ml-24 sm:mr-10 md:mx-28 lg:mx-48',
 };
 
 export default Dropdown;
