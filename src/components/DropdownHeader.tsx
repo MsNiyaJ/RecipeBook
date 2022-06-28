@@ -19,8 +19,8 @@ const DropdownHeader = ({ title, state }) => {
 };
 
 const styles = {
+  containerClass: 'flex items-center pt-6 pb-2',
   chevronClass: 'cursor-pointer',
-  containerClass: 'flex items-center',
 };
 
 export default DropdownHeader;

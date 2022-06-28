@@ -6,7 +6,7 @@ import RecipeImage from './RecipeImage';
 import Dropdown from './Dropdown';
 
 const styles = {
-  containerClass: 'container mx-auto ',
+  containerClass: 'container mx-auto pb-20',
   recipeDetails:
     'flex flex-col gap-5 justify-center items-center text-center mt-4',
 };
