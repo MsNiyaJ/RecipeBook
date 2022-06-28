@@ -72,7 +72,6 @@ export const AddRecipe = async (recipe: RecipeType) => {
     })
     .catch(() => {
       error = 'There was a problem adding your recipe. Please try again later.';
-      console.log(error);
     });
 
   return { response, error };
@@ -125,9 +124,6 @@ export const DeleteRecipe = async (id: string) => {
         return response.json();
       }
       throw new Error('Error deleting recipe');
-    })
-    .then(() => {
-      console.log('Recipe deleted:', id);
     })
     .catch(() => {
       error = 'Error deleting recipe';
