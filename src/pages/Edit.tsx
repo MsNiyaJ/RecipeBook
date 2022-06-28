@@ -28,8 +28,8 @@ const Edit = () => {
     prepTime: 'N/A',
     cookTime: 'N/A',
     servings: 'N/A',
-    ingredients: '',
-    instructions: '',
+    ingredients: [],
+    instructions: [],
   };
 
   const [formData, setFormData] = useState<RecipeType>({ ...initialState });
@@ -96,7 +96,7 @@ const Edit = () => {
   };
 
   return (
-    <div className="bg-white pt-14 md:pt-28">
+    <div className="bg-white">
       {open && (
         <Modal
           className="flex flex-col justify-center items-center text-center"
