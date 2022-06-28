@@ -28,8 +28,8 @@ const Edit = () => {
     prepTime: 'N/A',
     cookTime: 'N/A',
     servings: 'N/A',
-    ingredients: '',
-    instructions: '',
+    ingredients: [],
+    instructions: [],
   };
 
   const [formData, setFormData] = useState<RecipeType>({ ...initialState });
@@ -66,17 +66,27 @@ const Edit = () => {
   };
 
   /**
-   * @description POST request to update the recipe, then opens the modal
-   * @param {Event} e
+   * @description PUT request to update the recipe, then opens the modal
+   * @param e - The event object
    */
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    EditRecipe(id, formData).then((data) => {
+    // Convert ingredients and instructions to string arrays
+    const ingredients = formData.ingredients.toString().split('\n');
+    const instructions = formData.instructions.toString().split('\n');
+
+    // Create a new object with the new ingredients and instructions
+    const newFormData = {
+      ...formData,
+      ingredients,
+      instructions,
+    };
+
+    // PUT request to update the recipe
+    EditRecipe(id, newFormData).then((data) => {
       const { error: err } = data;
-
       if (err) setError(err);
-
       setOpen(true);
     });
   };
@@ -96,7 +106,7 @@ const Edit = () => {
   };
 
   return (
-    <div className="bg-white pt-14 md:pt-28">
+    <div className="bg-white">
       {open && (
         <Modal
           className="flex flex-col justify-center items-center text-center"
@@ -233,15 +243,17 @@ const Edit = () => {
             <TextArea
               name="ingredients"
               label="Ingredients"
+              subText=" (Please put each ingredient on its own line.)"
               required={true}
-              value={formData.ingredients}
+              value={formData.ingredients.join('\n')}
               onChange={onChange}
             />
             <TextArea
               name="instructions"
               label="Instructions"
+              subText=" (Please put each instruction on its own line.)"
               required={true}
-              value={formData.instructions}
+              value={formData.instructions.join('\n')}
               onChange={onChange}
             />
           </div>

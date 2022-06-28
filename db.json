@@ -32,8 +32,18 @@
       "prepTime": "10min",
       "cookTime": "1hr",
       "servings": "20",
-      "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "instructions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      "ingredients": [
+        "1 lb. lasagna noodles",
+        "1 lb. ground beef",
+        "ricotta cheese",
+        "1/2 cup grated parmesan cheese",
+        "1/2 cup grated mozzarella cheese"
+      ],
+      "instructions": [
+        "Preheat oven to 350 degrees F (175 degrees C).",
+        "In a medium frying pan, heat 1/2 cup of the oil on medium-high until hot.",
+        "Add the ground beef and cook until browned, 3 to 5 minutes."
+      ]
     },
     {
       "id": "2",
@@ -43,8 +53,12 @@
       "prepTime": "5min",
       "cookTime": "20min",
       "servings": "4",
-      "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "instructions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      "ingredients": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ],
+      "instructions": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      ]
     },
     {
       "title": "Strawberry Cheesecake",
@@ -54,8 +68,12 @@
       "prepTime": "N/A",
       "cookTime": "N/A",
       "servings": "N/A",
-      "ingredients": "Idk",
-      "instructions": "Eat it",
+      "ingredients": [
+        "Idk"
+      ],
+      "instructions": [
+        "Eat it"
+      ],
       "id": "vUaPIY7"
     },
     {
@@ -66,8 +84,12 @@
       "prepTime": "N/A",
       "cookTime": "N/A",
       "servings": "N/A",
-      "ingredients": "Chocolate Cake",
-      "instructions": "Bake it",
+      "ingredients": [
+        "Chocolate Cake"
+      ],
+      "instructions": [
+        "Bake it"
+      ],
       "id": "i7SO7nF"
     },
     {
@@ -78,9 +100,120 @@
       "prepTime": "5mins",
       "cookTime": "25mins",
       "servings": "10",
-      "ingredients": "fried chicken",
-      "instructions": "cook it",
+      "ingredients": [
+        "fried chicken"
+      ],
+      "instructions": [
+        "cook it"
+      ],
       "id": "-zoklw6"
+    },
+    {
+      "id": "h3ZT2kH",
+      "title": "THIS IS THE GREATEST SANDWICH OF ALL TIME. DON'T YOU AGREE? THIS IS THE GREATEST SANDWICH OF ALL TIM",
+      "link": "N/A",
+      "img": "/images/recipes/defaultrecipe.jpeg",
+      "description": "WHat A Long TiTlE",
+      "prepTime": "N/A",
+      "cookTime": "N/A",
+      "servings": "N/A",
+      "ingredients": [
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text."
+      ],
+      "instructions": [
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text.",
+        "Hello this is long line of text. Hello this is a long line of text. Hello this is long line of text. Hello this is a long line of text."
+      ]
+    },
+    {
+      "title": "Test",
+      "link": "N/A",
+      "img": "blob:http://localhost:3001/ae783aa2-2430-4619-a64e-b665c7aff52e",
+      "description": "Copy",
+      "prepTime": "5 minutes",
+      "cookTime": "8 minutes",
+      "servings": "3",
+      "ingredients": [
+        "1 cup pancake mix",
+        "1 cup milk",
+        "1/2 cup butter, melted",
+        "1/2 cup sugar",
+        "1/2 cup water",
+        "1 egg",
+        "1/2 teaspoon salt",
+        "1/2 teaspoon pepper"
+      ],
+      "instructions": [
+        "Mix all ingredients together in a bowl.",
+        "Heat a nonstick pan over medium heat.",
+        "Butter the pan.",
+        "Pour batter into pan.",
+        "Cook until bubbles appear on the surface and the edges are cooked.",
+        "Flip and cook until browned and cooked through.\nServe immediately."
+      ],
+      "id": "5qfc_70"
     }
   ]
 }

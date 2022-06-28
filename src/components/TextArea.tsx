@@ -6,7 +6,7 @@ export type TextAreaType = {
   required?: boolean;
   max?: number;
   subText?: string;
-  value?: string;
+  value?: string | string[];
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 

@@ -12,8 +12,7 @@ import { RecipeType } from '../types/types';
 const Add = () => {
   const [open, setOpen] = useState(false); // Used to open the modal
   const [error, setError] = useState(false); // Used to show an error message if a recipe can not be added
-  const initialState = {
-    id: '',
+  const initialState: RecipeType = {
     title: '',
     link: '',
     img: '/images/recipes/defaultrecipe.jpeg',
@@ -21,8 +20,8 @@ const Add = () => {
     prepTime: '',
     cookTime: '',
     servings: '',
-    ingredients: '',
-    instructions: '',
+    ingredients: [],
+    instructions: [],
   };
 
   const [formData, setFormData] = useState<RecipeType>({ ...initialState });
@@ -67,6 +66,11 @@ const Add = () => {
       if (item.name) {
         let itemValue = item.value.trim();
 
+        // If the element is ingredients or instructions, split the value into an array
+        if (item.name === 'ingredients' || item.name === 'instructions') {
+          itemValue = itemValue.split('\n');
+        }
+
         // Set default values for empty fields
         if (item.value === '' && item.name === 'description') {
           itemValue = 'No description provided';
@@ -109,7 +113,7 @@ const Add = () => {
   };
 
   return (
-    <div className="bg-white pt-14 md:pt-28">
+    <div className="bg-white">
       {open && (
         <Modal
           className="flex flex-col justify-center items-center text-center"
@@ -209,6 +213,7 @@ const Add = () => {
                 name={'prepTime'}
                 label={'Prep Time'}
                 subText=" (e.g. 1hr 5mins)"
+                // TODO: SET A SMALLER MAX CHAR FOR PREP TIME, COOKTIME, AND SERVINGS
                 max={100}
                 value={formData.prepTime}
                 onChange={onChange}
@@ -236,6 +241,7 @@ const Add = () => {
           <TextArea
             name={'ingredients'}
             label={'Ingredients'}
+            subText=" (Please put each ingredient on its own line.)"
             required={true}
             value={formData.ingredients}
             onChange={onChange}
@@ -243,6 +249,7 @@ const Add = () => {
           <TextArea
             name={'instructions'}
             label={'Instructions'}
+            subText=" (Please put each instruction on its own line.)"
             required={true}
             value={formData.instructions}
             onChange={onChange}

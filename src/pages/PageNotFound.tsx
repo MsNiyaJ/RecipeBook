@@ -10,9 +10,9 @@ const PageNotFound = () => {
         centerContent="Recipe Collection"
         rightContent={undefined}
       />
-      <div className="relative flex justify-center items-center pt-40">
+      <div className="relative flex justify-center items-center">
         <img
-          src="images/logos/transparent-logo2.png"
+          src="/images/logos/transparent-logo2.png"
           alt="404"
           className="not-found"
         />

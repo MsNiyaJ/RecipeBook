@@ -64,8 +64,43 @@ describe('Manage Recipes', () => {
       cy.contains(recipes[0].prepTime).should('exist');
       cy.contains(recipes[0].cookTime).should('exist');
       cy.contains(recipes[0].title).should('exist');
+
+      // When you click the ingredients button, it should hide the ingredients
       cy.contains(recipes[0].ingredients[0]).should('exist');
+      cy.getByTestId('dropdown-header-Ingredients').click();
+      cy.contains(recipes[0].ingredients[0]).should('not.exist');
+
+      // When you click the instructions button, it should hide the instructions
       cy.contains(recipes[0].instructions[0]).should('exist');
+      cy.getByTestId('dropdown-header-Instructions').click();
+      cy.contains(recipes[0].instructions[0]).should('not.exist');
+    });
+
+    it('can cross out ingredients on click', () => {
+      // View the recipe
+      cy.getByTestId('eye-icon').last().click();
+
+      // The first ingredient should be visible and not crossed out
+      cy.contains(recipes[0].ingredients[0]).should('exist');
+      cy.contains(recipes[0].ingredients[0]).should(
+        'not.have.class',
+        'line-through'
+      );
+
+      // Click the first ingredient, assert it should be crossed out
+      cy.contains(recipes[0].ingredients[0]).click();
+      cy.contains(recipes[0].ingredients[0]).should(
+        'have.class',
+        'line-through'
+      );
+
+      // Click the first checkbox, assert it should be unchecked
+      cy.get("input[type='checkbox']").first().click();
+      cy.get("input[type='checkbox']").first().should('not.be.checked');
+      cy.contains(recipes[0].ingredients[0]).should(
+        'not.have.class',
+        'line-through'
+      );
     });
   });
 
